@@ -1,0 +1,77 @@
+<div class="head">
+  <img src="assets/logo.png" alt="logo" />
+  <h3>Contrat de location/d'autopartage</h3>
+</div>
+
+<div class="body">
+  <div class="header">
+    <div class="renter data">
+      <h4>Entre</h4>
+      <h5>ManyEvents</h5>
+      <p class="address">Siège social : 8 rue Lequesne</p>
+      <p class="address">94130 Nogent-sur-marne</p>
+      <p class="italic">ci-après dénommée 'Le loueur'</p>
+    </div>
+    <div class="rental data">
+      <h4>Et</h4>
+      <h5>MORISSET LUCIE</h5>
+      <p class="address">Adresse : 8 rue Lequesne</p>
+      <p class="address">94130 Nogent-sur-marne</p>
+      <p class="italic">ci-après dénommée 'Le locataire'</p>
+    </div>
+  </div>
+  <div class="line"></div>
+
+  <div class="clauses">
+    <div class="item">
+      <h4>Article 1 : Objet du Contrat</h4>
+      <p>Le présent contrat concerne la location d’une Clio IV blanche, année 2018, immatriculée FB-604-DP.</p>
+    </div>
+    <div class="item">
+      <h4>Article 2 : Durée de la Location</h4>
+      <p>La location est accordée pour la période du 24 décembre 2023 au 25 décembre 2023.</p>
+    </div>
+    <div class="item">
+      <h4>Article 3 : Tarif et Modalités de Paiement</h4>
+      <p>Le tarif de location est de 100 Euros et devra être au plus tard une semaine avant la location.</p>
+    </div>
+    <div class="item">
+      <h4>Article 4 : État du Véhicule et Inventaire</h4>
+      <p>Un état des lieux du véhicule sera effectué en présence des deux parties au début et à la fin de la période de location.</p>
+    </div>
+    <div class="item">
+      <h4>Article 1 : Objet du Contrat</h4>
+      <p>Le présent contrat concerne la location d’une Clio IV blanche, année 2018, immatriculée FB-604-DP
+        ci-après dénommée "le Véhicule".</p>
+    </div>
+    <div class="item">
+      <h4>Article 5 : Assurance et Responsabilité</h4>
+      <p>Le Véhicule est assuré par manyEvents. Le Locataire est responsable des dommages causés au Véhicule ou par le Véhicule pendant la période de location, sauf si une assurance complémentaire est souscrite.</p>
+    </div>
+    <div class="item">
+      <h4>Article 6 : Conditions d'Utilisation</h4>
+      <p>Le Véhicule doit être utilisé conformément aux lois et règlements en vigueur. Toute sous-location ou prêt du Véhicule est interdit.</p>
+    </div>
+    <div class="item">
+      <h4>Article 7 : Pénalités en Cas de Dommages</h4>
+      <p>En cas de dommages non couverts par l’assurance, le Locataire sera tenu responsable des coûts de réparation à hauteur d’une franchise de 300euros ou moins selon le plan de protection choisi</p>
+    </div>
+    <div class="item">
+      <h4>Article 8 : Caution</h4>
+      <p>Le Locataire s'engage à verser une caution de 300 euros le premier jour de la location. Cette caution servira à couvrir d'éventuels dommages survenus au Véhicule pendant la période de location ou tout manquement aux conditions du présent contrat.</p>
+    </div>
+  </div>
+
+  <div class="sign">
+    <div class="renter">
+      <h4>ManyEvents</h4>
+      <img class="signature" src="assets/sign.png" />
+    </div>
+    <div class="rental">
+      <h4>MORISSET LUCIE</h4>
+      <button class="action" (click)="displaySignForm()"> signer </button>
+    </div>
+  </div>
+</div>
+
+<app-signature-pad *ngIf="seeSignForm" (hideSignFormEmitter)="hideSignForm()"></app-signature-pad>

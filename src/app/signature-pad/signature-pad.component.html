@@ -1,0 +1,22 @@
+<div class="full">
+  <div class="sign">
+    <div class="close" (click)="hideSignForm()">
+      <span class="material-symbols-outlined">close</span>
+    </div>
+    <h4>Veuillez signer ici </h4>
+    <canvas
+      #canvas
+      (touchstart)="startDrawing($event)"
+      (touchmove)="moved($event)"
+      width="350"
+      height="200"
+    ></canvas>
+
+    <button class="delete" (click)="clearPad()">Effacer</button>
+    <button (click)="savePad()">Signer</button>
+
+    <img src="{{ signatureImg }}" alt="" srcset="" />
+  </div>
+
+</div>
+

@@ -1,0 +1,63 @@
+<div class="form">
+  <form [formGroup]="formToAddContract">
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom + Prénom</mat-label>
+        <input  formControlName="fullname" matInput />
+      </mat-form-field>
+    </div>
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Adresse</mat-label>
+        <input  formControlName="address" matInput />
+      </mat-form-field>
+    </div>
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Ville</mat-label>
+        <input  formControlName="city" matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Caution</mat-label>
+        <input  formControlName="caution" matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom du véhicule</mat-label>
+        <input formControlName="vehicle"  matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Plaque</mat-label>
+        <input  formControlName="matriculation" matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="input">
+      <mat-form-field>
+        <mat-label>Date début</mat-label>
+        <input formControlName="start" matInput  [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="input">
+      <mat-form-field>
+        <mat-label>Date fin</mat-label>
+        <input matInput formControlName="end" [matDatepicker]="picker2">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <button class="submit" (click)="createContract()">Créer</button>
+  </form>
+</div>

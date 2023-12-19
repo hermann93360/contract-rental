@@ -1,0 +1,53 @@
+.full{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  position: fixed;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.51);
+}
+
+.sign{
+  width: 90%;
+  padding: 10px;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(56,65,74,.15);
+  position: relative;
+
+  .close{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  h4{
+    margin-bottom: 10px;
+    font-family: "League Spartan";
+    color: black;
+  }
+
+  canvas{
+    background-color: #dedede;
+    box-shadow: 0 1px 2px rgba(56,65,74,.15);
+  }
+
+  button{
+    background-color: #333652;
+    color: white;
+    font-family: "League Spartan";
+    border: none;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  .delete{
+    background-color: #FAD02C;
+  }
+}
