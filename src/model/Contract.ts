@@ -1,32 +1,19 @@
 export class Contrat {
-  fullname: string;
-  address: string;
-  city: string;
-  caution: string;
-  vehicle: string;
-  matriculation: string;
-  start: Date;
-  end: Date;
-  sign: boolean = false;
-
   constructor(
-    fullname: string,
-    address: string,
-    city: string,
-    caution: string,
-    vehicle: string,
-    matriculation: string,
-    start: Date,
-    end: Date
+    public fullname: string,
+    public address: string,
+    public city: string,
+    public caution: string,
+    public vehicle: string,
+    public matriculation: string,
+    public start: Date,
+    public end: Date,
+    public sign: boolean,
+    public price: string,
+    public identifier: string,
+    public signature: string,
+    public id?: string,
   ) {
-    this.fullname = fullname;
-    this.address = address;
-    this.city = city;
-    this.caution = caution;
-    this.vehicle = vehicle;
-    this.matriculation = matriculation;
-    this.start = start;
-    this.end = end;
-    this.sign = false;
   }
+
 }

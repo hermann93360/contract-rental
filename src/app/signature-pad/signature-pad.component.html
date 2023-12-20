@@ -14,6 +14,7 @@
 
     <button class="delete" (click)="clearPad()">Effacer</button>
     <button (click)="savePad()">Signer</button>
+    <p class="error" *ngIf="error">Aucune signature n'a été renseigné</p>
 
     <img src="{{ signatureImg }}" alt="" srcset="" />
   </div>

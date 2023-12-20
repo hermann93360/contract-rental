@@ -18,6 +18,7 @@ import {provideFirebaseApp, getApp, initializeApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
@@ -60,6 +61,7 @@ import {AngularFireModule} from "@angular/fire/compat";
       measurementId: "G-6BXV6CX2HX"
     }),
     AngularFirestoreModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,10 +11,15 @@ export class SignaturePadComponent implements AfterViewInit{
   @Output()
   hideSignFormEmitter = new EventEmitter<boolean>();
 
+  @Output()
+  signatureEmitter = new EventEmitter<string>();
+
+
   signatureNeeded!: boolean;
   signaturePad!: SignaturePad;
   @ViewChild('canvas') canvasEl!: ElementRef;
   signatureImg!: string;
+  error: boolean = false;
 
 
   ngAfterViewInit() {
@@ -32,10 +37,11 @@ export class SignaturePadComponent implements AfterViewInit{
   savePad() {
     const base64Data = this.signaturePad.toDataURL();
     console.log(base64Data)
-    this.signatureImg = base64Data;
-    this.signatureNeeded = this.signaturePad.isEmpty();
-    if (!this.signatureNeeded) {
-      this.signatureNeeded = false;
+    if(this.signaturePad.isEmpty()){
+      this.error = true;
+    }else{
+      this.signatureEmitter.emit(base64Data);
+      this.hideSignForm();
     }
   }
 
@@ -46,4 +52,5 @@ export class SignaturePadComponent implements AfterViewInit{
   hideSignForm(){
     this.hideSignFormEmitter.emit(false);
   }
+
 }
