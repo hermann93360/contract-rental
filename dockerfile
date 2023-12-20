@@ -1,4 +1,4 @@
-FROM node:18.10-alpine as build
+FROM node:20-bullseye-slim AS build
 WORKDIR /app
 COPY . .
 RUN npm install -g @angular/cli
