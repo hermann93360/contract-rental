@@ -7,4 +7,4 @@ RUN ng build --configuration=production
 
 FROM nginx:1.17.1-alpine
 COPY --from=build /app/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/poll-project /usr/share/nginx/html
+COPY --from=build /app/dist/contract-location /usr/share/nginx/html
