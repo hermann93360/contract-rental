@@ -19,51 +19,57 @@ import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {HttpClientModule} from "@angular/common/http";
+import {ConfirmationComponent} from "./book/confirmation/confirmation.component";
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContractComponent,
-    ClauseComponent,
-    SignaturePadComponent,
-    SetContractComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp({
-      apiKey: "AIzaSyAf_jyIpNTDLhI04A7btalrIQgiUbXtZ9I",
-      authDomain: "data-contract-471e4.firebaseapp.com",
-      projectId: "data-contract-471e4",
-      storageBucket: "data-contract-471e4.appspot.com",
-      messagingSenderId: "367711629873",
-      appId: "1:367711629873:web:95128f571727ee1aa89b10",
-      measurementId: "G-6BXV6CX2HX"
-    })),
-    provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyAf_jyIpNTDLhI04A7btalrIQgiUbXtZ9I",
-      authDomain: "data-contract-471e4.firebaseapp.com",
-      projectId: "data-contract-471e4",
-      storageBucket: "data-contract-471e4.appspot.com",
-      messagingSenderId: "367711629873",
-      appId: "1:367711629873:web:95128f571727ee1aa89b10",
-      measurementId: "G-6BXV6CX2HX"
-    }),
-    AngularFirestoreModule,
-    MatProgressSpinnerModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ContractComponent,
+        ClauseComponent,
+        SetContractComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        provideFirebaseApp(() => initializeApp({
+            apiKey: "AIzaSyAf_jyIpNTDLhI04A7btalrIQgiUbXtZ9I",
+            authDomain: "data-contract-471e4.firebaseapp.com",
+            projectId: "data-contract-471e4",
+            storageBucket: "data-contract-471e4.appspot.com",
+            messagingSenderId: "367711629873",
+            appId: "1:367711629873:web:95128f571727ee1aa89b10",
+            measurementId: "G-6BXV6CX2HX"
+        })),
+        provideFirestore(() => getFirestore()),
+        AngularFireModule.initializeApp({
+            apiKey: "AIzaSyAf_jyIpNTDLhI04A7btalrIQgiUbXtZ9I",
+            authDomain: "data-contract-471e4.firebaseapp.com",
+            projectId: "data-contract-471e4",
+            storageBucket: "data-contract-471e4.appspot.com",
+            messagingSenderId: "367711629873",
+            appId: "1:367711629873:web:95128f571727ee1aa89b10",
+            measurementId: "G-6BXV6CX2HX"
+        }),
+        AngularFirestoreModule,
+        MatProgressSpinnerModule,
+        ConfirmationComponent,
+        SignaturePadComponent,
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

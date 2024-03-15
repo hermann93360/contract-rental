@@ -1,0 +1,57 @@
+<div class="data-component">
+  <div class="title-box">
+    <div class="title-img">
+      <img src="assets/person.png" alt="license"/>
+      <h4 class="title">Dites nous en plus sur vous ...</h4>
+    </div>
+    <p class="title-desc">Merci de nous fournir les informations demandés.</p>
+  </div>
+  <section>
+    <div class="container">
+        <form [formGroup]="dataForm" class="example-form">
+          <div class="input">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nom</mat-label>
+              <input formControlName="firstname" matInput/>
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field class="example-full-width">
+              <mat-label>Prénom</mat-label>
+              <input formControlName="lastname"  matInput/>
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field class="example-full-width">
+              <mat-label>Adresse complète</mat-label>
+              <input #inputValue type="text" (keyup)="setAddresses(inputValue)" matInput [formControl]="myControl"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                @for (option of filteredOptions | async;track option) {
+                  <mat-option [value]="option">{{ option.label }}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="input">
+            <mat-form-field class="example-full-width">
+              <mat-label>Mail</mat-label>
+              <input formControlName="mail"  matInput/>
+            </mat-form-field>
+          </div>
+        </form>
+
+      <div class="upload-btn">
+        <button #uploadButton class="upload"
+                [disabled]="!formIsValid()"
+                (click)="saveData()">Enregistrer
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+

@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "version": "draft",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.369463,
+          48.898841
+        ]
+      },
+      "properties": {
+        "label": "8 Boulevard Ney 75018 Paris",
+        "score": 0.1838690909090909,
+        "housenumber": "8",
+        "id": "75118_6743_00008",
+        "name": "8 Boulevard Ney",
+        "postcode": "75018",
+        "citycode": "75118",
+        "x": 653773.14,
+        "y": 6866721.94,
+        "city": "Paris",
+        "district": "Paris 18e Arrondissement",
+        "context": "75, Paris, Île-de-France",
+        "type": "housenumber",
+        "importance": 0.82256,
+        "street": "Boulevard Ney"
+      }
+    }
+  ],
+  "attribution": "BAN",
+  "licence": "ETALAB-2.0",
+  "query": "8 bd",
+  "limit": 5
+}

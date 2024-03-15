@@ -42,7 +42,7 @@ export class ContractService {
       );
   }
 
-  sign(contractId: string, updatedContract: Contrat ){
+  updateContract(contractId: string, updatedContract: Contrat ){
     return this.store.collection('contract').doc(contractId).update(updatedContract)
 
   }

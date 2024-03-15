@@ -1,0 +1,152 @@
+.content:last-child{
+  padding-bottom: 10px;
+}
+.contract{
+  padding: 20px;
+  box-sizing: border-box;
+
+  .title-box{
+    margin-bottom: 20px;
+    .title-img{
+      display: flex;
+      align-items: center;
+      img{
+        width: 50px;
+        margin-right: 10px;
+      }
+      .title{
+        font-family: Poppins;
+        color: #0B1320;
+        font-weight: 700;
+        font-size: 1.5em;
+        line-height: 20px;
+      }
+    }
+    .title-desc{
+      font-family: Poppins;
+      font-weight: 300;
+      font-size: 0.9em;
+    }
+  }
+}
+.content{
+  padding-top: 10px;
+  box-sizing: border-box;
+  .container{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-sizing: border-box;
+    transition: all 200ms ease-in-out 0s;
+  }
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    .icon{
+      margin-right: 10px;
+      span{
+        background:  linear-gradient(-107deg,#82009f 0%,#f7345e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        font-size: 30px;
+      }
+      //animation: myAnim 2s ease 0s infinite normal forwards;
+
+    }
+
+    h3{
+      font-family: Poppins;
+      font-weight: 700;
+      font-size: 20px;
+      color: #1c0950;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .body{
+    font-family: Poppins, serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(28,9,80,.5);
+
+    p{
+      text-align: center;
+      font-size: 1em;
+    }
+  }
+}
+
+button{
+  width: 100%;
+  background-color: #0B1320;
+  color: white;
+  font-family: Poppins;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.3em;
+  border: none;
+  padding: 15px;
+  margin-top: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.form-float{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container{
+  position: relative;
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 1px 7px rgba(56, 65, 74, 0.15);
+  border-radius: 10px;
+  padding: 15px;
+  .close{
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  .input{
+    padding-bottom: 10px;
+  }
+}
+
+h4{
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 1.8em;
+  color: #0B1320;
+}
+p{
+  font-family: Poppins;
+  font-weight: 300;
+  font-size: 0.8em;
+}
+@keyframes myAnim {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}

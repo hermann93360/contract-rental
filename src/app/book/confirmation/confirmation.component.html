@@ -1,0 +1,166 @@
+<div class="contract">
+  <div class="title-box">
+    <div class="title-img">
+      <img src="assets/contract.png" alt="license"/>
+      <h4 class="title">Ici, votre contrat électronique !</h4>
+    </div>
+    <p class="title-desc">
+      Veuillez prendre le temps de lire attentivement ce document et de le signer. En cas de contrôle, merci de présenter ce document avec les papiers du véhicule</p>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3>Objet du contrat</h3>
+      </div>
+
+      <div class="body">
+        <p>Le présent contrat concerne la location d’un ou une immatriculée.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3>Durée de la Location</h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3> Tarif et Modalités de Paiement </h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3> État du Véhicule et Inventaire </h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3> Assurance et Responsabilité </h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3> Pénalités en Cas de Dommages</h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <div class="header">
+        <div class="icon">
+          <span class="material-symbols-sharp">monitor_weight_gain</span>
+        </div>
+        <h3> Caution </h3>
+      </div>
+
+      <div class="body">
+        <p>La location est accordée pour la période du 11/11/1111 au 11/11/1111</p>
+      </div>
+    </div>
+  </div>
+  <button class="get-car" (click)="toggleGetCarForm()">
+    Je récupère le véhicule
+  </button>
+</div>
+
+<div class="form-float" *ngIf="displayGetCarForm">
+  <div class="container">
+    <div class="close">
+      <span class="material-symbols-outlined" (click)="toggleGetCarForm()">close</span>
+    </div>
+    <div class="input">
+      <h4>Prêt pour le voyage ?</h4>
+      <p>Veuillez compléter ces informations pour pouvoir accéder au véhicule</p>
+    </div>
+
+    <form>
+      <div class="input">
+        <mat-form-field class="example-full-width">
+          <mat-label>Kilométrage</mat-label>
+          <input matInput/>
+        </mat-form-field>
+      </div>
+      <div class="input">
+        <mat-form-field>
+          <mat-label>Niveau d'essence</mat-label>
+          <select matNativeControl required>
+            <option value="volvo">Plein</option>
+            <option value="saab">3/4</option>
+            <option value="mercedes">1/2</option>
+            <option value="audi">1/4</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div class="input">
+        <p>Propreté intérieur du véhicule</p>
+        <app-star-rating name="interior"></app-star-rating>
+      </div>
+
+      <div class="input">
+        <p>Propreté extérieur du véhicule</p>
+        <app-star-rating name="exterior"></app-star-rating>
+      </div>
+
+      <div class="input">
+        <p>En signant, j'atteste récupérer le véhicule en date du {{ currentDate | date : 'dd/MM/yyyy' }} à {{ currentDate | date : 'hh:mm' }}</p>
+        <app-signature-pad></app-signature-pad>
+      </div>
+    </form>
+  </div>
+</div>
+
+

@@ -2,9 +2,10 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild} f
 import SignaturePad from 'signature_pad';
 
 @Component({
-  selector: 'app-signature-pad',
-  templateUrl: './signature-pad.component.html',
-  styleUrls: ['./signature-pad.component.scss']
+    selector: 'app-signature-pad',
+    templateUrl: './signature-pad.component.html',
+    standalone: true,
+    styleUrls: ['./signature-pad.component.scss']
 })
 export class SignaturePadComponent implements AfterViewInit{
 

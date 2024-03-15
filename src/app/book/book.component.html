@@ -1,0 +1,23 @@
+@if (bookFormStep.form === FormType.START) {
+  <div class="step">
+    <app-init (digitCompleted)="connectWithCode($event)"></app-init>
+  </div>
+} @else if (bookFormStep.form === FormType.SET_DATA) {
+  <div class="step">
+    <app-data (personData)="getDataForPerson($event)"></app-data>
+  </div>
+} @else if (bookFormStep.form === FormType.UPLOAD_LICENSE) {
+  <div class="step">
+    <app-upload-license (fileVersoEmitter)="getDataForLicense($event)"></app-upload-license>
+  </div>
+} @else if (bookFormStep.form === FormType.PROOF_ADDRESS) {
+  <div class="step">
+    <app-upload-address-proof (addressProof)="getDataForAddressProof($event)"></app-upload-address-proof>
+  </div>
+}@else if (bookFormStep.form === FormType.CONFIRMATION) {
+  <div class="step">
+    <app-confirmation ></app-confirmation>
+  </div>
+}
+
+

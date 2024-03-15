@@ -49,7 +49,7 @@ export class ContractComponent implements OnInit, AfterViewInit {
     if (this.contract !== undefined && this.contract.id !== undefined) {
       this.contract.signature = signature
       this.contract.sign = true
-      this.contractService.sign(this.contract.id, this.contract)
+      this.contractService.updateContract(this.contract.id, this.contract)
     }
   }
 }

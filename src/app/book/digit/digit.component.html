@@ -1,0 +1,40 @@
+<div class="digit">
+  <div #case1 class="case focus">
+    <input type="number"
+           (focus)="focusHandler(case1, input1)"
+           (blur)="blurHandler(case1, input1)"
+           class="focus-underline" #input1
+           (keyup)="onKeyup($event,input1,input2,case1,case2,0)"
+           (keyup.backspace)="onKeyUpDelete(input1,undefined,case2, undefined, 0)"
+           maxLength="1" minLength="1" />
+  </div>
+
+  <div #case2 class="case">
+    <input type="number"
+           (focus)="focusHandler(case2, input2)"
+           (blur)="blurHandler(case2, input2)"
+           #input2 (keyup)="onKeyup($event, input2,input3,case2,case3, 1)"
+           (keyup.backspace)="onKeyUpDelete(input2,input1,case2,case1,1)"
+           maxLength="1" minLength="1" />
+  </div>
+
+  <div #case3 class="case">
+    <input type="number"
+           (focus)="focusHandler(case3, input3)"
+           (blur)="blurHandler(case3, input3)"
+           #input3
+           (keyup)="onKeyup($event,input3,input4,case3,case4,2)"
+           (keyup.backspace)="onKeyUpDelete(input3,input2,case3,case2,2)"
+           maxLength="1" minLength="1" />
+  </div>
+
+  <div #case4 class="case">
+    <input type="number"
+           (focus)="focusHandler(case4, input4)"
+           (blur)="blurHandler(case4, input4)"
+           #input4
+           (keyup.backspace)="onKeyUpDelete(input4,input3,case4,case3,3)"
+           (keyup)="constructValue()"
+           maxLength="1" minLength="1" />
+  </div>
+</div>

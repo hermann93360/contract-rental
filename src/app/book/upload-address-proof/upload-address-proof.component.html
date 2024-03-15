@@ -1,0 +1,40 @@
+<div class="upload-proof-component">
+  <div class="title-box">
+    <div class="title-img">
+      <img src="assets/document.png" alt="license" />
+      <h4 class="title">Place a votre justificatif de domicile...</h4>
+    </div>
+    <p class="title-desc">Merci de téléverser un justificatif de domicile valide.</p>
+  </div>
+  <section>
+    <div class="container">
+      <div class="upload-box" (click)="openBoxForChooseFile(recto)">
+        <input #recto hidden type="file" accept="image/jpeg, image/png, image/jpg, application/pdf" (change)="selectProofFile($event)"/>
+        @if (selectedProofFile) {
+          <div class="preview">
+            <p>Vous avez téléchargé ce fichier : </p>
+            <h3>{{this.selectedProofFile.name}}</h3>
+          </div>
+        } @else {
+          <div class="text-data">
+            <span class="material-symbols-outlined icon">download</span>
+            <h4>Justificatif de domicile</h4>
+            <p>Télécharger depuis votre appareil</p>
+          </div>
+        }
+      </div>
+
+      <div class="upload-btn">
+        <button #uploadButton class="upload"
+                [disabled]="!selectedProofFile"
+                (click)="upload()">Télécharger
+        </button>
+      </div>
+      <div class="text-information">
+        <p>*Assurez vous que les mentions sois correctement visible</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
