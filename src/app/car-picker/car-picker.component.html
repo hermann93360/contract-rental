@@ -1,0 +1,54 @@
+@for (car of cars; track cars) {
+    <div class="card" (click)="selectCar(car)">
+      <div class="img-head">
+        <img src="assets/clio.jpg" />
+      </div>
+      <div class="gradient">
+
+      </div>
+      <div class="about">
+        <div class="top">
+          <h4>{{car.make}} {{car.model}}</h4>
+          <p class="model">{{ car.type }}</p>
+          <div class="some-data">
+            <div class="data">
+              <span class="material-symbols-outlined">auto_transmission</span>
+              <p>{{ car.transmission }}</p>
+            </div>
+            <div class="data">
+              <span class="material-symbols-outlined">person</span>
+              <p>{{ car.passenger }}</p>
+            </div>
+            <div class="data">
+              <span class="material-symbols-outlined">propane_tank</span>
+              <p>{{ car.fuel }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="price">
+            <div class="price-text-unit">
+              <p>{{ car.unitPrice }}</p>
+              <p>/jour</p>
+            </div>
+            <div class="price-text-global">
+              <p>{{car.getTotalPrice(startDate, endDate, [])}} € au total</p>
+            </div>
+          </div>
+          <div class="odometers">
+            <span class="material-symbols-outlined">done</span>
+            <p>Incl. {{ car.distanceIncluded }} km</p>
+          </div>
+        </div>
+
+        <!--
+        <div class="location">
+          <span class="material-symbols-outlined">location_on</span>
+        </div>
+        -->
+      </div>
+    </div>
+  }
+
+

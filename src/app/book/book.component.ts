@@ -13,7 +13,7 @@ import {PersonData} from "./data/PersonData";
 import {InitComponent} from "./init/init.component";
 import {ActivatedRoute} from "@angular/router";
 import {ContractService} from "../../contract.service";
-import {Contrat} from "../../model/Contract";
+import {Booking} from "../../model/Contract";
 import {ConfirmationComponent} from "./confirmation/confirmation.component";
 
 @Component({
@@ -32,7 +32,7 @@ import {ConfirmationComponent} from "./confirmation/confirmation.component";
 export class BookComponent {
 
   contractId: string;
-  contract!: Contrat | undefined
+  contract!: Booking | undefined
 
   bookFormStep: BookForm = BookForm.init();
   bookFormData: BookFormData = new BookFormData();
@@ -90,7 +90,7 @@ export class BookComponent {
   getDataForPerson(personData: PersonData) {
     console.log(this.contract)
     if (this.contract) {
-      this.contract.fullname = personData.fullname
+      this.contract.fullName = personData.fullname
       this.contract.address = personData.address
       this.contract.mail = personData.mail
       this.contract.formStep = FormType.UPLOAD_LICENSE

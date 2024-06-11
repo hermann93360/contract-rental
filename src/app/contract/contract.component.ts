@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Contrat} from "../../model/Contract";
+import {Booking} from "../../model/Contract";
 import {ContractService} from "../../contract.service";
 import {single} from "rxjs";
 
@@ -15,7 +15,7 @@ export class ContractComponent implements OnInit, AfterViewInit {
 
   idOfContract = '';
 
-  contract!: Contrat | undefined
+  contract!: Booking | undefined
 
   spin = true;
 

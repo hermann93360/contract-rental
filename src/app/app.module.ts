@@ -21,6 +21,10 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpClientModule} from "@angular/common/http";
 import {ConfirmationComponent} from "./book/confirmation/confirmation.component";
+import {CheckoutComponent} from "./checkout/checkout.component";
+import { provideNgxStripe } from 'ngx-stripe';
+import {PaymentDataSettingsComponent} from "./payment-data-settings/payment-data-settings.component";
+import {HomeComponent} from "./home/home.component";
 
 
 
@@ -66,8 +70,13 @@ import {ConfirmationComponent} from "./book/confirmation/confirmation.component"
         MatProgressSpinnerModule,
         ConfirmationComponent,
         SignaturePadComponent,
+        CheckoutComponent,
+        PaymentDataSettingsComponent,
+        HomeComponent,
     ],
-    providers: [],
+    providers: [
+      provideNgxStripe('pk_test_51OuaRSDexVtbuJLZavgmajD6zlt0vEq6uLDUCwu5Qectd4ohYRSGRYwQInKfHQ29O6cFV7FS5AMkAxTZJE5Kn8Ys00iw6ECKnl')
+    ],
     exports: [
     ],
     bootstrap: [AppComponent]

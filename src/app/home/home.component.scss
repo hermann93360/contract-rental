@@ -1,0 +1,67 @@
+.title{
+  font-family: Poppins;
+  font-weight: 800;
+  font-size: 3em;
+  line-height: 30px;
+}
+
+h4 {
+  font-family: Poppins;
+  font-size: 0.8em;
+  font-weight: 800;
+  line-height: 10px;
+  margin-top: 10px;
+}
+
+.head{
+  margin: 20px 10px;
+}
+
+.btns{
+  padding-left: 20px;
+  padding-right: 20px;
+  .submit {
+    box-sizing: border-box !important;
+    font-family: Poppins;
+    font-weight: 600;
+    background-color: #54075b;
+    border: transparent;
+    color: white !important;
+    padding: 15px;
+    width: 100%;
+    border-radius: 7px;
+  }
+}
+
+
+.date-picker{
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 20px 20px 10px;
+  box-shadow: 0 1px 2px rgba(56, 65, 74, .15);
+  border-radius: 7px;
+}
+
+.hours-pickers {
+  display: flex;
+  justify-content: space-between;
+
+  .input-hours-picker{
+    width: 49%;
+  }
+}
+
+.input-line{
+  display: flex;
+
+  .input-date-picker{
+    margin-right: 5px;
+  }
+}
+.input-line:first-child{
+  margin-bottom: 5px;
+}
+.cars-picker {
+  padding: 20px;
+}

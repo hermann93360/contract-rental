@@ -1,0 +1,29 @@
+.checkout{
+  width: 500px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.page{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b13207d;
+}
+.button{
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #351D5D;
+  color: white;
+  border: none;
+  font-size: 1.1em;
+  font-family: 'Roboto';
+  padding: 10px;
+  width: 100%;
+  font-weight: 900;
+}

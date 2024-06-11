@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {Contrat} from "./model/Contract";
+import {Booking} from "./model/Contract";
 import {map, Observable} from "rxjs";
 import {ContractComponent} from "./app/contract/contract.component";
 
@@ -12,12 +12,12 @@ export class ContractService {
   constructor(private store: AngularFirestore) {
   }
 
-  addContract(contract: Contrat) {
+  addContract(contract: Booking) {
     return this.store.collection('contract').add(contract);
   }
 
-  getContractById(contractId: string):Observable<Contrat | undefined> {
-    return this.store.collection('contract').doc<Contrat>(contractId).snapshotChanges().pipe(
+  getContractById(contractId: string):Observable<Booking | undefined> {
+    return this.store.collection('contract').doc<Booking>(contractId).snapshotChanges().pipe(
       map(action => {
         const data = action.payload.data() as any;
         const id = action.payload.id;
@@ -28,8 +28,8 @@ export class ContractService {
     );
   }
 
-  getContractByIdentifier(identifier: string): Observable<Contrat[]> {
-    return this.store.collection<Contrat>('contract', ref => ref.where('identifier', '==', identifier))
+  getContractByIdentifier(identifier: string): Observable<Booking[]> {
+    return this.store.collection<Booking>('contract', ref => ref.where('identifier', '==', identifier))
       .snapshotChanges()
       .pipe(
         map(actions => actions.map(a => {
@@ -42,7 +42,7 @@ export class ContractService {
       );
   }
 
-  updateContract(contractId: string, updatedContract: Contrat ){
+  updateContract(contractId: string, updatedContract: Booking ){
     return this.store.collection('contract').doc(contractId).update(updatedContract)
 
   }

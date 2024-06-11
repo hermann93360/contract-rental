@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="checkout">
+    @if (elementsOptions.clientSecret){
+      <ngx-stripe-elements
+        [stripe]="stripe"
+        [elementsOptions]="elementsOptions">
+        <ngx-stripe-payment [options]="paymentElementOptions"/>
+        <button class="button" (click)="pay()">Payer ({{ price | moneyConverterUI }})</button>
+      </ngx-stripe-elements>
+    }
+  </div>
+</div>

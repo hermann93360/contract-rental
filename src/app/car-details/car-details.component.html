@@ -1,0 +1,95 @@
+<div class="car-details">
+
+  <div class="head">
+    <div class="gradient">
+    </div>
+    <button class="back" (click)="goCarPickers()">
+      <span class="material-symbols-outlined">arrow_back_ios</span>
+    </button>
+
+    <div class="img-head">
+      <img src="assets/clio.jpg"/>
+    </div>
+  </div>
+
+  <div class="body-car-details">
+
+    <div class="top">
+      <h3>{{car?.make}}</h3>
+      <p> {{car?.description}} </p>
+    </div>
+
+    <div class="bottom">
+
+      <div class="car-data">
+        <div class="data">
+          <span class="material-symbols-outlined">flight_class</span>
+          <h5>{{car?.passenger}} Places</h5>
+        </div>
+
+        <div class="data">
+          <span class="material-symbols-outlined">auto_transmission</span>
+          <h5>{{car?.transmission}}</h5>
+        </div>
+
+        <div class="data">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <h5>{{car?.year}}</h5>
+        </div>
+      </div>
+
+      <div class="car-data">
+        <div class="data">
+          <span class="material-symbols-outlined">propane_tank</span>
+          <h5>{{car?.fuel}}</h5>
+        </div>
+
+        <div class="data special">
+          <span class="material-symbols-outlined">id_card</span>
+          <h5>Nombre d'année de permis minimum pour louer ce véhicule : 1 an</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-complementary-data">
+
+    <h3 class="assurance-title">S'assurer, c'est important</h3>
+
+    <div class="card">
+      <div class="pop">Populaire</div>
+      <h3 class="card-title">Premier</h3>
+      <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
+        Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
+      <div class="card-price">
+        <h4>+ {{car?.getPremiumInsurancePrice(currentBook.start!, currentBook.end!, [])}}</h4>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Standard</h3>
+      <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
+        Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
+      <div class="card-price">
+        <h4>+ {{car?.getStandardInsurancePrice(currentBook.start!, currentBook.end!, [])}}€</h4>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Limité</h3>
+      <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
+        Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
+      <div class="card-price">
+        <h4>Inclus</h4>
+      </div>
+    </div>
+
+    <app-total-price
+      [price]="car?.getTotalPrice(currentBook.start!, currentBook.end!, [])!">
+    </app-total-price>
+
+  </div>
+  <div class="wrapper">
+    <button class="manycar-btn" (click)="bookCar()">Suivant</button>
+  </div>
+</div>

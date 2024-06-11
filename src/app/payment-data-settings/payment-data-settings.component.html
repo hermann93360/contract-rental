@@ -1,0 +1,14 @@
+<button (click)="initPayment()">Payer !</button>
+
+@if(displayPaymentForm){
+  <app-checkout [name]="'Hermann'"
+                [email]="'hermann@gmail.com'"
+                [zipCode]="'93360'"
+                [address]="'6 av danielle casanova'"
+                [city]="'NP'"
+                [price]="2800"
+                (paymentStatus)="processPayment($event)"
+
+  ></app-checkout>
+
+}

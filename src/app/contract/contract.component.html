@@ -18,7 +18,7 @@
     </div>
     <div class="rental data">
       <h4>Et</h4>
-      <h5>{{contract?.fullname | uppercase}}</h5>
+      <h5>{{contract?.fullName | uppercase}}</h5>
       <p class="address">Adresse : {{contract?.address}}</p>
       <p class="italic">ci-après dénommée 'Le locataire'</p>
     </div>
@@ -66,7 +66,7 @@
       <img class="signature" src="assets/sign.png" />
     </div>
     <div class="rental">
-      <h4>{{contract?.fullname | uppercase}}</h4>
+      <h4>{{contract?.fullName | uppercase}}</h4>
       @if (!contract?.sign){
         <button class="action" (click)="displaySignForm()"> signer </button>
       } @else {

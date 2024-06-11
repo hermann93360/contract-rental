@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; width: 100% }
+
 p{margin: 0 !important; padding: 0}
 .mat-typography h1,.mat-typography h2,.mat-typography h3,.mat-typography h4,.mat-typography h5,.mat-typography h6{margin: 0; padding: 0; color: #333652
 }
@@ -12,7 +13,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 .mat-mdc-form-field {
   width: 100%;
 }
-
+mat-progress-bar .mat-progress-bar-buffer {
+  background-color: #000000 !important;
+}
 @font-face {
   font-family: "couture";
   src: url('assets/fonts/couture.otf');
@@ -50,5 +53,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 }@font-face {
   font-family: "proximalLight";
   src: url('assets/proximaLight.otf');
+}
+
+* {
+  color: black !important;
 }
 

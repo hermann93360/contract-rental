@@ -1,0 +1,57 @@
+<!--
+<div class="head">
+  <h1 class="title">Réservez une véhicule rapidement et sans tracas</h1>
+  <h4>Terminé les files d'attentes ! Réservez en quelques minutes, dévérouiller le véhicule et bye !</h4>
+</div>
+-->
+
+<form [formGroup]="datePickerForm">
+  <div class="date-picker">
+    <div class="input-line">
+      <mat-form-field class="example-form-field">
+        <mat-label>Date souhaité</mat-label>
+        <mat-date-range-input
+          [rangePicker]="campaignOnePicker">
+          <input matStartDate placeholder="Début" formControlName="startDate">
+          <input matEndDate placeholder="Jusqu'au" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+
+    <div class="input-line hours-pickers">
+      <div class="input-hours-picker">
+        <mat-form-field>
+          <mat-label>Départ</mat-label>
+          <mat-select formControlName="startHour">
+            @for (hours of timeOfDates; track timeOfDates) {
+              <mat-option [value]="hours.timeObject">{{hours.timeAsString}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-hours-picker">
+        <mat-form-field>
+          <mat-label>Retour</mat-label>
+          <mat-select formControlName="endHour">
+            @for (hours of timeOfDates; track timeOfDates) {
+              <mat-option [value]="hours.timeObject">{{hours.timeAsString}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button class="submit" (click)="searchAvailableCars()">Rechercher</button>
+  </div>
+</form>
+
+@if(dateSet) {
+  <div class="cars-picker">
+    <app-car-picker [startDate]="dateSet.start"
+                    [endDate]="dateSet.end"></app-car-picker>
+  </div>
+}
