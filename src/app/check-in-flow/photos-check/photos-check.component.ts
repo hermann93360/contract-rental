@@ -25,14 +25,14 @@ export class PhotosCheckComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.checkInService.getPhotos(this.type).subscribe((images) => {
+    this.checkInService.getPhotos(this.type, 'check-in').subscribe((images) => {
       this.images = images;
     })
   }
 
   getPhotosAndClose(images: Image[]) {
     this.camera = false
-    this.checkInService.addPhotos(images, this.type);
+    this.checkInService.addPhotos(images, this.type, 'check-in');
   }
 
   displayCamera() {

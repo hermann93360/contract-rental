@@ -1,11 +1,16 @@
 <div [class]="startComponent ? 'ggm blur' : 'ggm'">
   @if(center){
+
     <google-map [center]="center" [zoom]="zoom" [options]="options" height="100%" width="100%">
-      @if (!startComponent) {
-        <map-marker [position]="center"></map-marker>
-        @if (currentLocation) {
-          <map-marker [position]="currentLocation" title="You are here!" [options]="markerOptions"></map-marker>
+      @if(carSupport === "check-in"){
+        @if (!startComponent) {
+          <map-marker [position]="center"></map-marker>
         }
+      } @else {
+        <map-circle [center]="center" [radius]="200" [options]="circleOptions"></map-circle>
+      }
+      @if (currentLocation) {
+        <map-marker [position]="currentLocation" title="You are here!" [options]="markerOptions"></map-marker>
       }
     </google-map>
   }

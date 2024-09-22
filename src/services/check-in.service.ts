@@ -15,13 +15,12 @@ export class CheckInService{
   public flow: Flow;
   public sharedFlow: BehaviorSubject<Flow>;
   public contractId?: string
-  public sharedContractId?: BehaviorSubject<string | undefined>
+  public sharedContractId: Subject<string | undefined> = new Subject<string | undefined>();
 
   constructor(private firebaseService: FirestoreService, private router: Router) {
     this.flow = Flow.init();
     this.initialize();
     this.sharedFlow = new BehaviorSubject<Flow>(this.flow)
-    this.sharedContractId = new BehaviorSubject<string | undefined>(undefined)
   }
 
   public changeStep(stepToGo: string, action?: string | null) {
@@ -48,15 +47,19 @@ export class CheckInService{
     this.persist();
   }
 
-  public addPhotos(images: Image[], type: string) {
-    this.firebaseService.uploadCarPhotos(images, this.contractId!, type)
+  public addPhotos(images: Image[], type: string, carSupport: string) {
+    this.firebaseService.uploadCarPhotos(images, this.contractId!, type, carSupport)
   }
-  public getPhotos(type: string) {
-    return this.firebaseService.getCarPhotos(this.contractId!, type);
+  public getPhotos(type: string, carSupport: string) {
+    return this.firebaseService.getCarPhotos(this.contractId!, type, carSupport);
   }
 
   private getContract(contractId: string) {
     return this.firebaseService.getContract(contractId);
+  }
+
+  public updateContractSupport(newCarSupport: string) {
+    return this.firebaseService.updateContractSupport(this.contractId!, newCarSupport);
   }
 
   private initialize() {
@@ -79,8 +82,10 @@ export class CheckInService{
       this.getContract(id).subscribe((value) => {
         if(value){
           this.contractId = id;
-          this.sharedContractId?.next(this.contractId)
+          this.sharedContractId.next(this.contractId)
           this.flow.carSupport = value.carSupport
+        } else {
+          this.sharedContractId.next(undefined)
         }
       })
     }

@@ -7,15 +7,16 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-card-info',
   standalone: true,
-    imports: [
-        ButtonComponent
-    ],
+  imports: [
+    ButtonComponent
+  ],
   templateUrl: './card-info.component.html',
   styleUrl: './card-info.component.scss'
 })
 export class CardInfoComponent {
 
   public currentStep!: string
+  public carSupport!: string
   @Input()
   public check!: boolean
   public addressOfCar!: string
@@ -25,7 +26,10 @@ export class CardInfoComponent {
 
   constructor(private checkInService: CheckInService, private boxService: CarBoxService, private router: Router) {
     this.checkInService.sharedFlow.subscribe((flow) => {
-        this.currentStep = flow.currentStep
+      this.currentStep = flow.currentStep
+      if (flow.carSupport) {
+        this.carSupport = flow.carSupport
+      }
     });
 
     this.boxService.address.subscribe((address) => {
@@ -34,7 +38,7 @@ export class CardInfoComponent {
   }
 
   navigate(route?: string) {
-    if(route){
+    if (route) {
       this.checkInService.navigateTo(route)
     } else {
       this.checkInService.navigateTo()
@@ -53,12 +57,23 @@ export class CardInfoComponent {
   }
 
   getButtonText(): string {
-    switch (this.currentStep){
-      case "exterior" : return "Prenez des photos de l'exterieur";
-      case "interior" : return "Prenez des photos de l'intérieur";
-      case "details" : return "Prenez des photos du kilométrage et de l'essence";
-      case "blemishes" : return "Prenez des photos des imperfections";
+    switch (this.currentStep) {
+      case "exterior" :
+        return "Prenez des photos de l'exterieur";
+      case "interior" :
+        return "Prenez des photos de l'intérieur";
+      case "details" :
+        return "Prenez des photos du kilométrage et de l'essence";
+      case "blemishes" :
+        return "Prenez des photos des imperfections";
     }
     return "";
+  }
+
+  getTitle(){
+    if(this.carSupport === 'check-in'){
+      return "Rendez-vous au véhicule"
+    }
+    return "Déposez le véhicule"
   }
 }

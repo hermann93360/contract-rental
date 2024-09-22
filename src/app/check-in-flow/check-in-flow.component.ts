@@ -4,6 +4,7 @@ import {PickCarComponent} from "./pick-car/pick-car.component";
 import {CheckInService} from "../../services/check-in.service";
 import {ButtonComponent} from "../elements/button/button.component";
 import {ActivatedRoute, Router, RouterOutlet} from "@angular/router";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-check-in-flow',
@@ -12,7 +13,8 @@ import {ActivatedRoute, Router, RouterOutlet} from "@angular/router";
     StartComponent,
     PickCarComponent,
     ButtonComponent,
-    RouterOutlet
+    RouterOutlet,
+    MatProgressSpinnerModule
   ],
   templateUrl: './check-in-flow.component.html',
   styleUrl: './check-in-flow.component.scss'
@@ -22,6 +24,7 @@ export class CheckInFlowComponent implements OnInit {
   public displayIntroductionSide!: boolean
   public currentStep!: string
   public canDoCheckIn: boolean = false
+  public inProgress = true;
 
   constructor(private checkInService: CheckInService, private activatedRoute: ActivatedRoute, private router: Router) {
 
@@ -32,9 +35,11 @@ export class CheckInFlowComponent implements OnInit {
     });
 
     this.checkInService.sharedContractId?.subscribe((contractId) => {
+      console.log(contractId)
       if(contractId){
         this.canDoCheckIn = true;
       }
+      this.inProgress = false;
     })
 
     this.checkInService.sharedFlow.subscribe((flow) => {

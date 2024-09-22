@@ -1,8 +1,9 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild} from '@angular/core';
 import {Blemishes, Details, Exterior, Image, Interior} from "../../../model/CheckPhotos";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ButtonComponent} from "../../elements/button/button.component";
 import {Data} from "./data";
+
 @Component({
   selector: 'app-camera',
   standalone: true,
@@ -13,7 +14,7 @@ import {Data} from "./data";
   templateUrl: './camera.component.html',
   styleUrl: './camera.component.scss'
 })
-export class CameraComponent {
+export class CameraComponent implements OnDestroy {
 
   public currentPhoto: number = 0;
   public photosExteriorExample = Data.exteriorData
@@ -39,6 +40,10 @@ export class CameraComponent {
 
   constructor() {
     this.startCamera();
+  }
+
+  ngOnDestroy(): void {
+    this.stopCamera()
   }
 
   getImageExample() {
@@ -80,13 +85,25 @@ export class CameraComponent {
         let capabilities: any = track.getCapabilities();
         if (capabilities.torch) {
           await track.applyConstraints({
-            advanced: [{torch: this.flashEnabled, focusMode: 'auto'}]
+            advanced: [{torch: false, focusMode: 'auto'}]
           });
         }
       }
     } catch (error) {
       this.erreur = error;
       console.error('Erreur lors de l’accès à la caméra:', error);
+    }
+  }
+
+  async stopCamera(): Promise<void> {
+    if (this.mediaStream) {
+      // Arrêter tous les tracks de mediaStream
+      this.mediaStream.getTracks().forEach(track => {
+        track.stop();
+      });
+      // Réinitialiser mediaStream à null si vous en avez besoin
+      this.mediaStream = undefined;
+      console.log("La caméra a été arrêtée.");
     }
   }
 
@@ -120,7 +137,7 @@ export class CameraComponent {
     await track.applyConstraints({advanced: [{torch: this.flashEnabled}]});
   }
 
-  closeCamera(){
+  closeCamera() {
     this.photos.emit(this.images);
   }
 

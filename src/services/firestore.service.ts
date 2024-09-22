@@ -14,7 +14,7 @@ export class FirestoreService {
   constructor(private database: AngularFirestore, private storage: AngularFireStorage) {
   }
 
-  uploadCarPhotos(images: Image[], contractId: string, type: string) {
+  uploadCarPhotos(images: Image[], contractId: string, type: string, carSupport: string) {
     for (let indice = 0; indice < images.length; indice++) {
       console.log(images[indice].blob)
       const filePath = this.getFilePath(type, indice);
@@ -23,7 +23,7 @@ export class FirestoreService {
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
-            this.saveFileData(url, contractId, type, 'start', indice);
+            this.saveFileData(url, contractId, type, carSupport, indice);
           });
         })
       ).subscribe();
@@ -44,10 +44,11 @@ export class FirestoreService {
     return "";
   }
 
-  getCarPhotos(contractId: string, type: string): Observable<Image[]> {
+  getCarPhotos(contractId: string, type: string, carSupport: string): Observable<Image[]> {
     return this.database
       .collection('file', ref => ref
         .where('contractId', '==', contractId)
+        .where('carSupport', '==', carSupport)
         .where('type', '==', type))
       .snapshotChanges()
       .pipe(map(actions => actions.map(a => {
@@ -73,8 +74,14 @@ export class FirestoreService {
       );
   }
 
-  private saveFileData(url: string, contractId: string, type: string, when?: string, indice?: number) {
-    const data = {contractId: contractId, type: type, url: url, time: new Date(), indice: indice, when: when};
+  updateContractSupport(contractId: string, newCarSupport: string): Promise<void> {
+    return this.database.collection("contract").doc(contractId).update({
+      carSupport: newCarSupport
+    });
+  }
+
+  private saveFileData(url: string, contractId: string, type: string, carSupport?: string, indice?: number) {
+    const data = {contractId: contractId, type: type, url: url, time: new Date(), indice: indice, carSupport: carSupport};
     return this.database.collection('file').add(data);
   }
 }

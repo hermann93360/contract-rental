@@ -22,17 +22,23 @@ export class PickCarComponent implements AfterViewInit {
 
   public displayIntroductionSide!: boolean
   public carCoordinates!: google.maps.LatLngLiteral;
+  public carSupport!: string
   private geocoder: any;
 
   constructor(private checkInService: CheckInService, private carBoxService: CarBoxService) {
     this.geocoder = new google.maps.Geocoder();
     this.checkInService.sharedFlow.subscribe((flow) => {
+      if(flow.carSupport){
+        this.carSupport = flow.carSupport
+      }
+
       if (flow.currentStep === 'start') {
         this.displayIntroductionSide = true;
       } else {
         this.displayIntroductionSide = false;
       }
     });
+
 
     this.carBoxService.coordinates.subscribe((coordinates) => {
       console.log(coordinates)

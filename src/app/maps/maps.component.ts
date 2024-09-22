@@ -1,12 +1,14 @@
 import {AfterViewInit, Component, Input, NgZone, OnInit, ViewChild} from '@angular/core';
-import {GoogleMap, MapMarker} from "@angular/google-maps";
+import {GoogleMap, MapCircle, MapMarker, MapPolygon} from "@angular/google-maps";
 
 @Component({
   selector: 'app-maps',
   standalone: true,
   imports: [
     GoogleMap,
-    MapMarker
+    MapMarker,
+    MapPolygon,
+    MapCircle
   ],
   templateUrl: './maps.component.html',
   styleUrl: './maps.component.scss'
@@ -17,6 +19,9 @@ export class MapsComponent implements AfterViewInit{
 
   @Input()
   public center = { lat: 48.8566, lng: 2.3522 };
+
+  @Input()
+  public carSupport!: string
 
   public currentLocation: any;
 
@@ -211,21 +216,19 @@ export class MapsComponent implements AfterViewInit{
       scaledSize: new google.maps.Size(40, 40)
     }
   };
+  public circleOptions: google.maps.CircleOptions = {
+    fillColor: 'blue',
+    fillOpacity: 0.35,
+    strokeColor: 'blue',
+    strokeOpacity: 0.8,
+    strokeWeight: 2
+  };
 
   constructor() {
   }
 
   ngAfterViewInit(): void {
     this.getUserLocation();
-    /*
-    this.directionsRenderer = new google.maps.DirectionsRenderer({
-      preserveViewport: true
-    });
-    if(this.map?.googleMap){
-      this.directionsRenderer.setMap(this.map.googleMap);
-    }
-
-     */
   }
 
   calculateAndDisplayRoute() {
