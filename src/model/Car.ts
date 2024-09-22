@@ -18,10 +18,8 @@ export interface ICar{
 }
 export class Car {
 
-  private static HIGH_PERIOD =
-    [{start: "01/07", end: "02/09"},
-      {start: "19/10", end: "04/11"},
-      {start: "21/12", end: "06/01"}]
+  public static HIGH_PERIOD: SpecificPeriod[] =
+    [{start: new Date('01-07'), end: new Date('02-09')}]
 
   constructor(
     public make: string,
@@ -47,9 +45,19 @@ export class Car {
     return totalPrice * 0.30;
   }
 
+  getTotalPremiumInsurancePrice(debutLocation: Date, finLocation: Date, highPeriod: SpecificPeriod[]) {
+    const totalPrice = this.getTotalPrice(debutLocation, finLocation, highPeriod);
+    return totalPrice + this.getPremiumInsurancePrice(debutLocation, finLocation, highPeriod);
+  }
+
   getStandardInsurancePrice(debutLocation: Date, finLocation: Date, highPeriod: SpecificPeriod[]) {
     const totalPrice = this.getTotalPrice(debutLocation, finLocation, highPeriod);
     return totalPrice * 0.15;
+  }
+
+  getTotalStandardInsurancePrice(debutLocation: Date, finLocation: Date, highPeriod: SpecificPeriod[]) {
+    const totalPrice = this.getTotalPrice(debutLocation, finLocation, highPeriod);
+    return totalPrice + this.getStandardInsurancePrice(debutLocation, finLocation, highPeriod);
   }
 
 
@@ -93,6 +101,9 @@ export class Car {
   }
 
   getTotalPrice(debutLocation: Date, finLocation: Date, highPeriod: SpecificPeriod[]): number {
+    console.log(debutLocation)
+    debutLocation = new Date(debutLocation)
+    finLocation = new Date(finLocation)
     console.log(this.unitPrice)
     console.log(debutLocation)
     console.log(finLocation)

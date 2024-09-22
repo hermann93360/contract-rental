@@ -2,8 +2,6 @@ import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/c
 
 @Component({
   selector: 'app-digit',
-  standalone: true,
-  imports: [],
   templateUrl: './digit.component.html',
   styleUrl: './digit.component.scss'
 })

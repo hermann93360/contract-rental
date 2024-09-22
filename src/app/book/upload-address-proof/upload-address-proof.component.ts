@@ -4,8 +4,6 @@ import {FileUpload} from "../../../model/FileUpload";
 
 @Component({
   selector: 'app-upload-address-proof',
-  standalone: true,
-  imports: [],
   templateUrl: './upload-address-proof.component.html',
   styleUrl: './upload-address-proof.component.scss'
 })

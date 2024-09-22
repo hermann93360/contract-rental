@@ -1,10 +1,10 @@
 <div class="car-booking">
   <div class="nav">
-    <div class="content">
+    <div class="content" (click)="goPreviousPage()">
       <span class="material-symbols-outlined">arrow_back_ios</span>
     </div>
     <div class="progress-bar">
-      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+      <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
     </div>
   </div>
 
@@ -15,134 +15,91 @@
         <h1 class="driver-title">Qui va conduire ?</h1>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nom</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Nom"
+            icon="schedule"
+            placeholder="20"
+            formControlName="name"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Prénom</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Prénom"
+            icon="schedule"
+            placeholder="20"
+            formControlName="firstname"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Email"
+            icon="schedule"
+            placeholder="20"
+            formControlName="mail"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Mobile</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Téléphone"
+            icon="schedule"
+            placeholder="20"
+            formControlName="phone"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Adresse</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Adresse"
+            icon="schedule"
+            placeholder="20"
+            formControlName="address"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>N° de permis</mat-label>
-            <input matInput/>
-          </mat-form-field>
+          <el-input
+            type="input"
+            for="text"
+            subject="Numéro de permis"
+            icon="schedule"
+            placeholder="20"
+            formControlName="license"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Date d'obtention</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <el-input
+            type="date"
+            for="text"
+            subject="Date d'obtention"
+            placeholder="20"
+            formControlName="dateOfLicense"></el-input>
         </div>
 
         <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Date de naissance</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker">
-              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <el-input
+            type="date"
+            for="text"
+            subject="Date de naissance"
+            placeholder="20"
+            formControlName="dateOfBirth"></el-input>
         </div>
       </div>
-
-
-      <div class="driver">
-        <h1 class="driver-title">Quel lieu pour la prise en charge ?</h1>
-
-
-        <div class="container">
-          <div class="grid-wrapper grid-col-auto">
-            <label for="radio-card-1" class="radio-card">
-              <input type="radio" id="radio-card-1" value="true" formControlName="delivery"/>
-              <div class="card-content-wrapper">
-                <span class="additional-price">+ 50 €</span>
-                <span class="check-icon"></span>
-                <div class="card-content">
-                  <div class="titles">
-                    <h4>Livraison à domicile</h4>
-                    <h5>Lorem ipsum dolor sit amet,.</h5>
-                  </div>
-                </div>
-              </div>
-            </label>
-            <!-- /.radio-card -->
-
-            <label for="radio-card-2" class="radio-card">
-              <input type="radio" formControlName="delivery" value="false" id="radio-card-2" checked/>
-              <div class="card-content-wrapper">
-                <span class="additional-price">Inclus</span>
-                <span class="check-icon"></span>
-                <div class="card-content">
-                  <div class="titles">
-                    <h4>Récupération à Neuilly-Plaisance</h4>
-                    <h5>Lorem ipsum dolor sit amet, consectetur.</h5>
-                  </div>
-                </div>
-              </div>
-            </label>
-            <!-- /.radio-card -->
-          </div>
-          <!-- /.grid-wrapper -->
-        </div>
-        <!-- /.container -->
-      </div>
-
-      @if(form.value['delivery'] == "true") {
-        <div class="input">
-          <mat-form-field class="example-full-width">
-            <mat-label>Adresse complète</mat-label>
-            <input #inputValue type="text" (keyup)="setAddresses(inputValue)" matInput [formControl]="myControl"
-                   [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-              @for (option of filteredOptions | async;track option) {
-                <mat-option [value]="option">{{ option.label }}</mat-option>
-              }
-            </mat-autocomplete>
-          </mat-form-field>
-        </div>
-      }
 
     </form>
 
-    <app-total-price></app-total-price>
+    <app-total-price [price]="book?.price!"></app-total-price>
 
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper" (click)="submitForm()">
     <button class="manycar-btn">Réserver</button>
   </div>
 

@@ -1,0 +1,48 @@
+.input{
+  width: 100%;
+  position: relative;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  p{
+  }
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+
+  h2{
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    min-width: 100px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+input{
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+.icon{
+  position: absolute;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 0;
+  font-size: 20px;
+  margin-right: 20px;
+  color: rgb(204, 204, 204);
+  box-sizing: border-box;
+}
+input:focus{
+  border-color: #ededed;
+}
+

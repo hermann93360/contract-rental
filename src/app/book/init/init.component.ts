@@ -3,10 +3,6 @@ import {DigitComponent} from "../digit/digit.component";
 
 @Component({
   selector: 'app-init',
-  standalone: true,
-  imports: [
-    DigitComponent
-  ],
   templateUrl: './init.component.html',
   styleUrl: './init.component.scss'
 })

@@ -6,7 +6,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatIconModule} from "@angular/material/icon";
 import {TotalPriceComponent} from "../elements/total-price/total-price.component";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, Location} from "@angular/common";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatOptionModule} from "@angular/material/core";
 import {Addresses} from "../../model/Addresses";
@@ -14,23 +14,11 @@ import {map, Observable, startWith} from "rxjs";
 import {AdressService} from "../../services/adress.service";
 import {BookingService} from "../../services/booking.service";
 import {Book} from "../../model/Book";
+import {SessionService} from "../../services/session.service";
+import {AppModule} from "../app.module";
 
 @Component({
   selector: 'app-car-booking',
-  standalone: true,
-  imports: [
-    MatProgressBarModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatIconModule,
-    TotalPriceComponent,
-    AsyncPipe,
-    MatAutocompleteModule,
-    MatOptionModule
-  ],
   templateUrl: './car-booking.component.html',
   styleUrl: './car-booking.component.scss',
   encapsulation: ViewEncapsulation.None
@@ -46,30 +34,57 @@ export class CarBookingComponent implements OnInit{
 
   constructor(private addressService: AdressService,
               private formBuilder: FormBuilder,
-              private bookingService: BookingService) {
-    this.book = this.bookingService.getBook()
+              private sessionSession: SessionService,
+              private bookingService: BookingService,
+              private location: Location) {
+
+
+    this.book = this.sessionSession.bookingData
     this.form = this.formBuilder.group({
-      delivery: ["false"]
+      delivery: ["false"],
+      name: ['', Validators.required],
+      firstname: ['', Validators.required],
+      mail: ['', Validators.required],
+      phone: ['', Validators.required],
+      address: ['', Validators.required],
+      license: ['', Validators.required],
+      dateOfLicense: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
     })
-    this.form.valueChanges.subscribe(value => {
-      if(value['delivery'] == 'true') {
-        this.addDeliveryPriceInTotalPrice()
-      }else {
-        this.removeDeliveryPriceInTotalPrice()
-      }
-    })
+
+    this.populateForm(this.book);
   }
 
-  addDeliveryPriceInTotalPrice() {
-    this.book.price! += 50
-    this.bookingService.patchBook(this.book);
+  populateForm(book: Book): void {
+    console.log(book)
+    this.form.patchValue({
+      name: book.lastname,
+      firstname: book.firstname,
+      mail: book.mail,
+      phone: book.phone,
+      address: book.address,
+      license: book.licenseNumber,
+      dateOfLicense: book.dateOfLicense ? book.dateOfLicense.toISOString().substring(0, 10) : '',
+      dateOfBirth: book.dateOfBirth ? book.dateOfBirth.toISOString().substring(0, 10) : ''
+    });
   }
-  removeDeliveryPriceInTotalPrice() {
-    this.book.price! -= 50
-    this.bookingService.patchBook(this.book);
-  }
-  displayFn(address: Addresses): string {
-    return address && address.label ? address.label : '';
+
+  submitForm() {
+    console.log(this.form.value)
+    if(!this.form.valid) {
+      throw new Error();
+    }
+
+    const formValue = this.form.value;
+    this.sessionSession.sendPrivateData(
+      formValue['firstname'],
+      formValue['name'],
+      formValue['mail'],
+      formValue['address'],
+      formValue['phone'],
+      formValue['license'],
+      formValue['dateOfLicense'],
+      formValue['dateOfBirth']);
   }
 
   ngOnInit() {
@@ -98,5 +113,10 @@ export class CarBookingComponent implements OnInit{
     }
 
   }
+
+  goPreviousPage() {
+    this.location.back();
+  }
+
 
 }

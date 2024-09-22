@@ -5,8 +5,6 @@ import {Licenses} from "../../../model/Upload-component/Licenses";
 
 @Component({
   selector: 'app-upload-license',
-  standalone: true,
-  imports: [],
   templateUrl: './upload-license.component.html',
   styleUrl: './upload-license.component.scss'
 })

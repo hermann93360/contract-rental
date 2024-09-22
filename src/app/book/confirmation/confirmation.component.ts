@@ -8,17 +8,6 @@ import {DatePipe, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-confirmation',
-  standalone: true,
-  imports: [
-    StarRatingComponent,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    SignaturePadComponent,
-    DatePipe,
-    NgIf
-  ],
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.scss'
 })

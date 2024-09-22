@@ -15,17 +15,10 @@ import {ActivatedRoute} from "@angular/router";
 import {ContractService} from "../../contract.service";
 import {Booking} from "../../model/Contract";
 import {ConfirmationComponent} from "./confirmation/confirmation.component";
+import {AppModule} from "../app.module";
 
 @Component({
   selector: 'app-book',
-  standalone: true,
-  imports: [
-    UploadLicenseComponent,
-    UploadAddressProofComponent,
-    DataComponent,
-    InitComponent,
-    ConfirmationComponent
-  ],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })

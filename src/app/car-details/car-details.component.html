@@ -56,26 +56,26 @@
 
     <h3 class="assurance-title">S'assurer, c'est important</h3>
 
-    <div class="card">
+    <div [class]="currentBook?.insuranceType === 'PREMIUM' ? 'chosen card' : 'card' " (click)="selectInsurance('PREMIUM')" >
       <div class="pop">Populaire</div>
       <h3 class="card-title">Premier</h3>
       <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
         Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
       <div class="card-price">
-        <h4>+ {{car?.getPremiumInsurancePrice(currentBook.start!, currentBook.end!, [])}}</h4>
+        <h4>+ {{car?.getPremiumInsurancePrice(currentBook?.start!, currentBook?.end!, [])}}</h4>
       </div>
     </div>
 
-    <div class="card">
+    <div [class]="currentBook?.insuranceType === 'STANDARD' ? 'chosen card' : 'card' " (click)="selectInsurance('STANDARD')">
       <h3 class="card-title">Standard</h3>
       <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
         Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
       <div class="card-price">
-        <h4>+ {{car?.getStandardInsurancePrice(currentBook.start!, currentBook.end!, [])}}€</h4>
+        <h4>+ {{car?.getStandardInsurancePrice(currentBook?.start!, currentBook?.end!, [])}}€</h4>
       </div>
     </div>
 
-    <div class="card">
+    <div [class]="currentBook?.insuranceType === 'BASIC' ? 'chosen card' : 'card' " (click)="selectInsurance('BASIC')">
       <h3 class="card-title">Limité</h3>
       <p class="description">Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad
         Mesopotamiam missus a socero per militares numeros immodice scrutabatur</p>
@@ -85,7 +85,7 @@
     </div>
 
     <app-total-price
-      [price]="car?.getTotalPrice(currentBook.start!, currentBook.end!, [])!">
+      [price]="currentBook?.price!">
     </app-total-price>
 
   </div>

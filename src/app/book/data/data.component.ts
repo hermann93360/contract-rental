@@ -11,14 +11,6 @@ import {PersonData} from "./PersonData";
 
 @Component({
   selector: 'app-data',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    AsyncPipe
-  ],
   templateUrl: './data.component.html',
   styleUrl: './data.component.scss'
 })
