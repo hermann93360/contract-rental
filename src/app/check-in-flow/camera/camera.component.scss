@@ -1,0 +1,196 @@
+.camera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  .video-focus{
+    position: absolute; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 70%;
+    overflow: hidden;
+
+  }
+
+  .video-container {
+    width: 100%;    // 100% de la largeur de la fenêtre d'affichage
+    height: 100%;   // 100% de la hauteur de la fenêtre d'affichage
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .real-camera{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  z-index: 3;
+  padding: 10px;
+  box-sizing: border-box;
+  background-image: linear-gradient(to bottom, black, transparent);
+  margin-bottom: 5px;
+  height: 25%;
+
+  .example {
+    display: flex;
+    flex-direction: column;
+    h1{
+      background-color: white;
+      font-family: Poppins;
+      font-weight: 600;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 0 0 12px 12px;
+    }
+    img{
+      border-radius: 12px 12px 0 0;
+      width: 65px;
+    }
+  }
+
+  .schema{
+    img{
+      width: 100px;
+    }
+  }
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+  padding: 20px;
+  box-sizing: border-box;
+  background-image: linear-gradient(to top, black, transparent);
+  img{
+    width: 60px;
+    transition: all 200ms ease-in-out 0s;
+  }
+  img:active{
+    transform: scale(1.2);
+  }
+  .flash{
+    color: white;
+    position: absolute;
+    top:0;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    span{
+      font-size: 25px;
+      background-color: rgb(173 173 173 / 50%);
+      border-radius: 50%;
+      padding: 5px;
+    }
+  }
+
+  .done{
+    color: white;
+    position: absolute;
+    top:0;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    button{
+      background-color: rgba(173, 173, 173, 0.5);
+      border-radius: 15px;
+      border: none;
+      color: white;
+      font-family: poppins;
+      font-weight: 200;
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  z-index: 3;
+}
+
+.inner-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 70%;
+  background-color: transparent; /* Fully transparent */
+  /* No border for the inner frame, it's completely see-through */
+
+  .top, .bottom{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.corner {
+  width: 50px; /* Size of the half-squares */
+  height: 50px; /* Size of the half-squares */
+}
+
+.top-left {
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+}
+
+.top-right {
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.bottom-left {
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+}
+
+.bottom-right {
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+}
+
+.spinner{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+

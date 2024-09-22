@@ -1,0 +1,63 @@
+@if (inProgress) {
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+}
+<div class="camera">
+  <div class="frame">
+    <div class="header">
+      <div class="example">
+        @if (type !== 'blemishes') {
+          <img [src]="getImageExample()?.image">
+          <h1>{{ currentPhoto }}</h1>
+        }
+      </div>
+      <div class="schema">
+        @if (type !== 'blemishes') {
+          <img [src]="getImageExample()?.schema">
+        }
+      </div>
+    </div>
+
+    <div class="inner-frame">
+      <div class="top">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+      </div>
+      <div class="bottom">
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img src="../../../assets/images/photo-btn.png" (click)="capturePhoto()"/>
+      <div class="flash">
+        @if (flashEnabled) {
+          <span class="material-symbols-outlined" (click)="toggleFlash()">flash_on</span>
+        } @else {
+          <span class="material-symbols-outlined" (click)="toggleFlash()">flash_off</span>
+        }
+      </div>
+
+      @if (type === 'blemishes') {
+        <div class="done">
+          <button class="next-btn" (click)="closeCamera()"> J'ai fini</button>
+        </div>
+      }
+    </div>
+  </div>
+
+
+  <div class="video-container">
+    <video class="real-camera" #videoElement playsinline autoplay muted></video>
+  </div>
+
+
+  <!--
+  <button (click)="toggleFlash()">Toggle Flash</button>
+  <button (click)="capturePhoto()">Capturer Photo</button>
+  -->
+  <canvas #canvasElement style="display: none;"></canvas>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="titles">
+    <h1>Retrouvez vos photos</h1>
+    <h3> {{getMainTitle()}} </h3>
+  </div>
+
+  <div class="photos">
+    @if (images && images.length != 0){
+      @for (photo of images; track images) {
+        <img [src]="photo.path" />
+      }
+    } @else {
+      <p class="none" >Aucune photo pour le moment...</p>
+    }
+  </div>
+
+</div>
+
+@if(camera) {
+  <app-camera (photos)="getPhotosAndClose($event)" [type]="this.type"></app-camera>
+}
+
+<app-card-info [check]="getCheckPage()" (camera)="displayCamera()"></app-card-info>

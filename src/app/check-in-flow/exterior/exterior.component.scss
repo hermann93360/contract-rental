@@ -1,0 +1,44 @@
+.container{
+  box-sizing: border-box;
+  padding: 100px 30px 30px;
+  padding-bottom: 300px;
+
+  .titles{
+    margin-bottom: 10px;
+    h1, h3{
+      font-family: Poppins;
+      line-height: 30px;
+    }
+    h1{
+      font-weight: 300;
+      font-size: 15px;
+    }
+
+    h3 {
+      font-weight: 900;
+      font-size: 30px;
+      color: #03101f;
+    }
+  }
+
+  .photos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    img{
+      width: 32%;
+      margin-bottom: 15px;
+
+    }
+    .none {
+      margin-top: 70px;
+      font-family: Poppins;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+
+}

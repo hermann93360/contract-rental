@@ -1,0 +1,44 @@
+
+@if(canDoCheckIn){
+  @if (displayIntroductionSide) {
+    <div class="all">
+      <app-start></app-start>
+    </div>
+  } @else {
+    @if(currentStep != 'end') {
+      <div class="header">
+        <div class="container">
+          <div class="car-infos">
+            <div class="img" ></div>
+            <div class="infos">
+              <h4>Renault Clio V</h4>
+              <p>FE-593-ZJ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+  }
+
+  <router-outlet></router-outlet>
+
+  @if (!displayIntroductionSide && currentStep != 'end') {
+    <div class="footer">
+      <div class="container">
+        <div [class]="currentStep === 'pick-car' ? 'current pick-car' : 'pick-car'"><span class="material-symbols-outlined">explore</span></div>
+        <div [class]="currentStep === 'exterior' ? 'current exterior' : 'exterior'"><span class="material-symbols-outlined">local_car_wash</span></div>
+        <div [class]="currentStep === 'interior' ? 'current interior' : 'interior'"><span class="material-symbols-outlined">search_hands_free</span></div>
+        <div [class]="currentStep === 'details' ? 'current details' : 'details'"><span class="material-symbols-outlined">road</span></div>
+        <div [class]="currentStep === 'blemishes' ? 'current blemishes' : 'blemishes'"><span class="material-symbols-outlined">car_crash</span></div>
+      </div>
+    </div>
+
+  }
+} @else {
+  <div class="notFound">
+    <h1>404</h1>
+    <p>Cette page n'existe pas</p>
+  </div>
+}
+

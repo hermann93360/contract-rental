@@ -1,0 +1,86 @@
+.footer{
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .container-infos{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    img{
+      width: 150px;
+    }
+    .content{
+      display: flex;
+
+      img{
+        width: 100px;
+      }
+
+      *{
+        color: #232323;
+      }
+
+      h1{
+        font-family: Poppins;
+        font-weight: 900;
+        line-height: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      h4{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        line-height: 15px;
+        font-size: 13px;
+        font-family: Poppins;
+        margin-bottom: 10px;
+
+        span{
+          margin-right: 5px;
+        }
+      }
+      p{
+        font-family: Poppins;
+        font-weight: 300;
+        line-height: 15px;
+        font-size: 12px;
+      }
+    }
+    background-color: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    *{
+      width: 100%;
+    }
+
+    .none-blemishes {
+      margin-left: 5px;
+    }
+    /*
+    .find-car{
+      width: 84%;
+    }
+    .go{
+      width: 14%;
+    }
+     */
+  }
+}

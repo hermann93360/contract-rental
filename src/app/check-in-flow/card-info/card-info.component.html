@@ -1,0 +1,48 @@
+<div class="footer">
+  <div class="container-infos">
+    @if (currentStep === 'pick-car') {
+
+      <div class="content">
+        <img src="assets/images/pick-car.gif" alt="illustration" />
+        <div class="text">
+          <h1>Rendez-vous au véhicule</h1>
+          <h4> <span class="material-symbols-outlined">location_on</span>{{ addressOfCar }}</h4>
+          <p>La localisation précise du véhicule ainsi que l'itinéraire détaillé pour vous y rendre sont clairement indiqués sur la carte qui est affichée. </p>
+        </div>
+      </div>
+      <div class="buttons">
+        <app-button (click)="navigate('exterior')" class="find-car" text="J'ai trouvé la voiture"></app-button>
+      </div>
+
+    } @else if (isPhotosStep()){
+
+      <div class="content">
+        @if(check) {
+          <img src="assets/images/check.gif" alt="illustration" />
+        } @else {
+          <img src="assets/images/exterior.gif" alt="illustration" />
+        }
+        <div class="text">
+          @if(check) {
+            <h1>Vérifiez vos photos</h1>
+            <p>Prenez le temps de vérifier vos photos avant de les soumetres </p>
+          } @else {
+            <h1>{{ getButtonText() }}</h1>
+            <p>Take your time ! Les photos sont importants pour vous protéger </p>
+          }
+        </div>
+      </div>
+      <div class="buttons">
+        @if(check) {
+          <app-button (click)="navigate()" class="find-car" text="Mes photos sont bonnes" icon="check"></app-button>
+        } @else {
+          <app-button (click)="displayCamera()" class="find-car" text="Prendre les photos" icon="photo_camera"></app-button>
+          @if(currentStep === 'blemishes'){
+            <app-button (click)="navigate()" class="find-car none-blemishes" text="Aucune imperfection" icon="award_star"></app-button>
+          }
+        }
+      </div>
+
+    }
+  </div>
+</div>

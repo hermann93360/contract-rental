@@ -1,0 +1,23 @@
+
+
+.introduce{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  .text{
+    margin-top: 15px;
+    color: #141414;
+    font-weight: 200;
+    font-size: 12px;
+    text-align: center;
+    line-height: 13px;
+    width: 300px;
+  }
+}
+.logo {
+  width: 200px;
+}
