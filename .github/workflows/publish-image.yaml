@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE: ghcr.io/hermann93360/manycarapp:latest
+  DOCKER_IMAGE: ghcr.io/hermann93360/manycarapp
   RELEASE_NAME: manycar-app
   CHART_DIR: .helm-chart/angular-app
 
