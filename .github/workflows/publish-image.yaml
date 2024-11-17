@@ -1,6 +1,4 @@
 name: Build and Push Docker Image
-  curl -sfL https://get.k3s.io | sh -
-  sudo k3s server --disable traefik
 
 on:
   push:
