@@ -29,11 +29,12 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build . -t ghcr.io/hermann93360/manycarapp:latest
+          docker build . -t ghcr.io/hermann93360/manycarapp:${{ github.sha }}
 
       - name: Push Docker Image
         run: |
-          docker push ghcr.io/hermann93360/manycarapp:latest
+          docker push ghcr.io/hermann93360/manycarapp:${{ github.sha }}
+          echo "Here, docker tag : ${{ github.sha }}"
   deploy:
     name: Deploy to Kubernetes
     runs-on: ubuntu-latest
@@ -68,4 +69,4 @@ jobs:
           helm upgrade --install ${{ env.RELEASE_NAME }} ${{ env.CHART_DIR }} \
             --create-namespace \
             --set image.repository=${{ env.DOCKER_IMAGE }} \
-            --set image.tag=latest
+            --set image.tag=${{ github.sha }}
