@@ -18,6 +18,7 @@ import {BlemishesComponent} from "./check-in-flow/blemishes/blemishes.component"
 import {EndComponent} from "./check-in-flow/end/end.component";
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'contract', component: ContractComponent },
   { path: 'set-contract', component: SetContractComponent },
   { path: 'book', component: BookComponent },
