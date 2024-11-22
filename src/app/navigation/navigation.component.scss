@@ -1,0 +1,12 @@
+nav{
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  .logo {
+    img{
+      width: 60px;
+    }
+  }
+}

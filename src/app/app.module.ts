@@ -45,6 +45,9 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {MapsComponent} from "./maps/maps.component";
 import {CheckInFlowComponent} from "./check-in-flow/check-in-flow.component";
 import {ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {BoardComponent} from "./board/board.component";
+import {ButtonComponent} from "./elements/button/button.component";
+import {NavigationComponent} from "./navigation/navigation.component";
 
 
 @NgModule({
@@ -65,7 +68,8 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
     InitComponent,
     DigitComponent,
     StarRatingComponent,
-    CarBookingComponent
+    CarBookingComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +114,8 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
     TotalPriceComponent,
     MapsComponent,
     CheckInFlowComponent,
+    ButtonComponent,
+    NavigationComponent,
 
   ],
   providers: [
