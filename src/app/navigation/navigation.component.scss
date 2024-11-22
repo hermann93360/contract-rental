@@ -1,12 +1,46 @@
+.some-infos{
+  background-color: #faf1ed;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+
+  .call{
+    display: flex;
+    align-items: center;
+
+    p{
+      font-size: 0.8em;
+    }
+
+    img{
+      width: 25px;
+      margin-right: 5px;
+    }
+
+    span{
+      font-size: 17px;
+      margin-right: 5px;
+    }
+  }
+}
 nav{
   background-color: white;
   display: flex;
   align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  justify-content: space-between;
+
+  .menu {
+    .menu-btn{
+      span{
+        font-size: 30px;
+      }
+    }
+  }
   .logo {
     img{
-      width: 60px;
+      width: 50px;
     }
   }
 }
