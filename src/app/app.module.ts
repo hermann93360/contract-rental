@@ -48,6 +48,9 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
 import {BoardComponent} from "./board/board.component";
 import {ButtonComponent} from "./elements/button/button.component";
 import {NavigationComponent} from "./navigation/navigation.component";
+import {TagModule} from "primeng/tag";
+import {Button} from "primeng/button";
+import {CarouselModule} from "ngx-owl-carousel-o";
 
 
 @NgModule({
@@ -116,7 +119,10 @@ import {NavigationComponent} from "./navigation/navigation.component";
     CheckInFlowComponent,
     ButtonComponent,
     NavigationComponent,
-
+    CarouselModule,
+    TagModule,
+    Button,
+    CarouselModule
   ],
   providers: [
     provideNgxStripe('pk_test_51OuaRSDexVtbuJLZavgmajD6zlt0vEq6uLDUCwu5Qectd4ohYRSGRYwQInKfHQ29O6cFV7FS5AMkAxTZJE5Kn8Ys00iw6ECKnl')

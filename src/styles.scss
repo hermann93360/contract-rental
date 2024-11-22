@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'node_modules/remixicon/fonts/remixicon.css';
+
 html, body { height: 100%; width: 100% }
 
 p{padding: 0}
@@ -15,6 +19,100 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 }
 mat-progress-bar .mat-progress-bar-buffer {
   background-color: #000000 !important;
+}
+
+.owl-theme .owl-nav {
+  display: flex;
+}
+.owl-theme .owl-nav [class*="owl-"] {
+  color: #FFF;
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background: #D6D6D6;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span{
+    font-size: 15px;
+  }
+}
+.owl-theme .owl-nav {
+  margin-top: 0px;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: -50px;
+  right: 10px;
+}
+.owl-carousel {
+}
+
+.owl-item{
+  .banner-slide{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .even{
+      background-color: #faf1ed;
+    }
+
+    .odd{
+      background-color: #f2f7fa;
+    }
+    .comment{
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    .header{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .persona{
+        margin-right: 10px;
+        .persona-icon{
+          width: 50px;
+        }
+      }
+      .about{
+        h3{
+          font-size: 1.4em;
+          letter-spacing: -0.2px;
+          font-family: "Lora", serif !important;
+        }
+      }
+    }
+    .body{
+      p{
+        color: #696969 !important;
+      }
+    }
+    .illustration{
+      border-radius: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+  }
+}
+.owl-item:first-child{
+  .banner-slide{
+    padding-left: 0 !important;
+  }
+}
+.owl-item:last-child{
+  .banner-slide{
+    padding-right: 0 !important;
+  }
+}
+
+.owl-dots{
+  margin-top: 10px;
 }
 
 
