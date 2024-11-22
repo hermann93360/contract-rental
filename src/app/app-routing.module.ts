@@ -16,10 +16,12 @@ import {InteriorComponent} from "./check-in-flow/interior/interior.component";
 import {DetailsComponent} from "./check-in-flow/details/details.component";
 import {BlemishesComponent} from "./check-in-flow/blemishes/blemishes.component";
 import {EndComponent} from "./check-in-flow/end/end.component";
+import {BoardComponent} from "./board/board.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contract', component: ContractComponent },
+  { path: 'board', component: BoardComponent },
   { path: 'set-contract', component: SetContractComponent },
   { path: 'book', component: BookComponent },
   { path: 'home', component: HomeComponent },

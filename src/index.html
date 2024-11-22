@@ -23,7 +23,23 @@
 </head>
 <body class="mat-typography">
 <script src="https://js.stripe.com/v3/"></script>
-
+<script>
+  var lightbox = new SimpleLightbox('.picgallery a', {});
+  var menuid = '#headnav';
+  var gaptop = 135;
+  var scrollspeed = 1200;
+  var menu_active_class = 'active';
+  function progressscroll() {
+    let viewportscroll = document.body.scrollTop || document.documentElement.scrollTop;
+    let scrollheight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let scrolled = (viewportscroll / scrollheight) * 100;
+    document.getElementById("progressbar").style.width = scrolled + "%";
+  }
+  window.onscroll = function () {
+    progressscroll();
+  };
+</script>
+<script src="js/bliss.js"></script>
   <app-root></app-root>
 </body>
 </html>
