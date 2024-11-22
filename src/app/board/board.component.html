@@ -24,29 +24,34 @@
       </div>
       <div class="some">
         <div class="input">
+          <mat-form-field class="example-form-field">
+            <mat-label>Date souhaité</mat-label>
+            <mat-date-range-input
+              [rangePicker]="campaignOnePicker">
+              <input matStartDate placeholder="Début">
+              <input matEndDate placeholder="Jusqu'au" >
+            </mat-date-range-input>
+            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+
+        <div class="input">
           <el-input
-            type="input"
-            for="text"
-            subject="Numéro de permis"
-            icon="cancel"
+            type="select"
+            subject="Heure de départ"
+            icon="flag"
+            [selectValues]="hours"
             placeholder="20"></el-input>
         </div>
 
         <div class="input">
           <el-input
-            type="input"
-            for="text"
-            subject="Numéro de permis"
-            icon="cancel"
-            placeholder="20"></el-input>
-        </div>
-
-        <div class="input">
-          <el-input
-            type="input"
-            for="text"
-            subject="Numéro de permis"
-            icon="cancel"
+            type="select"
+            subject="Heure de retour"
+            icon="car_repair"
+            [selectValues]="hours"
             placeholder="20"></el-input>
         </div>
 

@@ -11,7 +11,7 @@ export interface Key {
   name: string;
 }
 export interface SelectValue {
-  value: string
+  value: any
   display: string
 }
 @Component({

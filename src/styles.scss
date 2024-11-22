@@ -214,3 +214,13 @@ input[type="number"]::-ms-clear,
 input[type="number"]::-ms-reveal {
   display: none;
 }
+.mdc-icon-button.mat-mdc-icon-button.mat-unthemed.mat-mdc-button-base {
+  margin-right: 4px;
+}
+
+.mat-datepicker-toggle-default-icon.ng-star-inserted {
+  opacity: 0.4;
+}
+.mat-mdc-select-arrow svg {
+  display: none;
+}

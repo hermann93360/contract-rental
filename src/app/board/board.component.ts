@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {AppModule} from "../app.module";
-import {InputComponent} from "../elements/input/input.component";
+import {InputComponent, SelectValue} from "../elements/input/input.component";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {Time} from "@angular/common";
 
 @Component({
   selector: 'app-board',
@@ -11,6 +12,7 @@ import {OwlOptions} from "ngx-owl-carousel-o";
 export class BoardComponent {
 
   title = 'ng-carousel-demo';
+  hours: SelectValue[] = []
 
   customOptions: OwlOptions = {
     loop: true,
@@ -83,4 +85,22 @@ export class BoardComponent {
     { id: "4", img: "assets/images/Manycar_28-04-2024-30.jpg" },
     { id: "5", img: "assets/images/Manycar_28-04-2024-9.jpg" }
   ];
+
+
+  constructor() {
+    this.hours = this.getHoursInDay();
+  }
+
+  getHoursInDay() {
+    let timeOfDates: SelectValue[] = []
+    for (let hours = 0; hours < 24; hours++) {
+      for (let minutes = 0; minutes < 60; minutes+=30) {
+        timeOfDates.push({
+          value: {hours: hours, minutes: minutes},
+          display: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+        })
+      }
+    }
+    return timeOfDates;
+  }
 }
