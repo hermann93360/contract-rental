@@ -33,6 +33,7 @@ export  class Book {
   static fromSerialized(serializedBook: any): Book {
     const book = new Book();
 
+    console.log(serializedBook)
     book.lastname = serializedBook.lastname;
     book.firstname = serializedBook.firstname;
     book.mail = serializedBook.mail;

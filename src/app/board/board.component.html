@@ -25,13 +25,13 @@
       </div>
       <div class="some">
         <form [formGroup]="datePickerForm">
-          <div class="input">
+          <div class="input" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
             <mat-form-field class="example-form-field">
               <mat-label>Date souhaité</mat-label>
               <mat-date-range-input
                 [rangePicker]="campaignOnePicker">
-                <input matStartDate placeholder="Début" formControlName="startDate">
-                <input matEndDate placeholder="Jusqu'au" formControlName="endDate">
+                <input matStartDate placeholder="Début" formControlName="startDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
+                <input matEndDate placeholder="Jusqu'au" formControlName="endDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
               </mat-date-range-input>
               <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>

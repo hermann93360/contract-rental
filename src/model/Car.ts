@@ -65,21 +65,21 @@ export class Car {
 
   static fromICar(carData: ICar): Car {
     return new Car(
-      carData.make,
-      carData.model,
-      carData.type,
-      carData.year,
-      carData.licensePlate,
-      carData.distanceIncluded,
-      carData.fuel,
-      carData.passenger,
-      carData.transmission,
-      carData.equipment,
-      carData.photos,
-      carData.unavailability,
-      carData.description,
-      carData.unitPrice,
-      carData.id
+      carData?.make,
+      carData?.model,
+      carData?.type,
+      carData?.year,
+      carData?.licensePlate,
+      carData?.distanceIncluded,
+      carData?.fuel,
+      carData?.passenger,
+      carData?.transmission,
+      carData?.equipment,
+      carData?.photos,
+      carData?.unavailability,
+      carData?.description,
+      carData?.unitPrice,
+      carData?.id
     );
   }
 
