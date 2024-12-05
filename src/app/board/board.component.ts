@@ -16,8 +16,11 @@ import {Router} from "@angular/router";
 export class BoardComponent {
 
   title = 'ng-carousel-demo';
-  hours: SelectValue[] = []
   datePickerForm!: FormGroup;
+  today = new Date("12/06/2024");
+  startHours: SelectValue[] = []
+  endHours: SelectValue[] = []
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -96,8 +99,10 @@ export class BoardComponent {
               private bookingService: BookingService,
               private sessionService: SessionService,
               private router: Router) {
-    this.hours = this.getHoursInDay();
+    this.startHours = this.getHoursInDay(0);
+    this.endHours = this.getHoursInDay(0);
     this.buildForm();
+    this.changeOnDates()
   }
 
   buildForm() {
@@ -109,14 +114,47 @@ export class BoardComponent {
     })
   }
 
-  getHoursInDay() {
+  changeOnDates() {
+    this.datePickerForm.valueChanges.subscribe((value) => {
+      console.log("je change ok")
+
+      if(value.startDate && value.endDate) {
+        console.log(this.today)
+        const normalizedStartDateHandle = new Date(value.startDate.getFullYear(), value.startDate.getMonth(), value.startDate.getDate());
+        const normalizedEndDateHandle = new Date(value.endDate.getFullYear(), value.endDate.getMonth(), value.endDate.getDate());
+        const normalizedDateToday = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
+
+        if(normalizedStartDateHandle.getTime() === normalizedDateToday.getTime()) {
+          this.startHours = this.getHoursInDay(this.today.getHours());
+        }
+
+        if(normalizedEndDateHandle.getTime() === normalizedDateToday.getTime()) {
+          this.endHours = this.getHoursInDay(this.today.getHours());
+        }
+
+        if(normalizedStartDateHandle.getTime() === normalizedEndDateHandle.getTime()) {
+          if(value.startHour) {
+            this.endHours = this.getHoursInDay(value.startHour.hours + 1)
+          }
+        }
+      }
+
+    })
+  }
+
+  getHoursInDay(filter?: number) {
+
+    console.log(filter)
     let timeOfDates: SelectValue[] = []
     for (let hours = 0; hours < 24; hours++) {
       for (let minutes = 0; minutes < 60; minutes+=30) {
-        timeOfDates.push({
-          value: {hours: hours, minutes: minutes},
-          display: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
-        })
+        if(filter != undefined && hours >= filter) {
+          timeOfDates.push({
+            value: {hours: hours, minutes: minutes},
+            display: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+          })
+        }
+
       }
     }
     return timeOfDates;
@@ -148,6 +186,8 @@ export class BoardComponent {
       throw new Error()
     }
 
+
+
     //in booking service this method going to initialize a list of available car and car-pickers component will call this list of cars
     this.bookingService.setAvailableCar(startDate, endDate);
     console.log(startDate)
@@ -155,5 +195,13 @@ export class BoardComponent {
     this.sessionService.chooseDate(startDate, endDate, startHourAndMin, endHourAndMin);
     this.router.navigate(['cars-picker'])
   }
+
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+    // Comparer avec aujourd'hui
+    return date <= new Date();
+  };
 
 }

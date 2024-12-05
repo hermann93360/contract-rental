@@ -16,6 +16,7 @@ export interface ICar{
   description: string,
   unitPrice: number,
   id?: string
+  illustration: {type: string, url: string}[]
 }
 
 export class Car {
@@ -38,7 +39,9 @@ export class Car {
     public unavailability: Unavailability[],
     public description: string,
     public unitPrice: number,
-    public id?: string
+    public id?: string,
+    public illustration?: {type: string, url: string}[]
+
   ) {
   }
 

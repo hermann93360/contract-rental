@@ -10,18 +10,19 @@
       <span class="material-symbols-outlined">unpaved_road</span>
     </div>
     <div class="some">
-      <form [formGroup]="datePickerForm">
+      <form [formGroup]="datePickerForm" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
         <div class="input">
           <mat-form-field class="example-form-field">
             <mat-label>Date souhaité</mat-label>
             <mat-date-range-input
-              [rangePicker]="campaignOnePicker">
-              <input matStartDate placeholder="Début" formControlName="startDate">
-              <input matEndDate placeholder="Jusqu'au" formControlName="endDate">
+              [rangePicker]="campaignOnePicker"
+              [min]="today">
+              <input matStartDate placeholder="Début" formControlName="startDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
+              <input matEndDate placeholder="Jusqu'au" formControlName="endDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
             </mat-date-range-input>
             <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+            <mat-date-range-picker touchUi #campaignOnePicker></mat-date-range-picker>
           </mat-form-field>
         </div>
 
@@ -30,7 +31,7 @@
             type="select"
             subject="Heure de départ"
             icon="flag"
-            [selectValues]="hours"
+            [selectValues]="startHours"
             placeholder="20" formControlName="startHour"></el-input>
         </div>
 
@@ -39,7 +40,7 @@
             type="select"
             subject="Heure de retour"
             icon="car_repair"
-            [selectValues]="hours"
+            [selectValues]="endHours"
             placeholder="20" formControlName="endHour"></el-input>
         </div>
 
@@ -56,7 +57,7 @@
     @for (car of cars; track cars) {
       <div class="card" (click)="selectCar(car)">
         <div class="img-head">
-          <img src="assets/images/Manycar_28-04-2024-7.jpg"/>
+          <img [src]="getMainIllustration(car)"/>
         </div>
         <div class="gradient">
 

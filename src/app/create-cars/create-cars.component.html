@@ -1,0 +1,8 @@
+
+<form [formGroup]="form">
+  <input type="text" formControlName="type" placeholder="type"/>
+  <input type="text" formControlName="docId" placeholder="docId"/>
+  <input type="file" multiple (change)="onFilesSelected($event)" >
+  <button (click)="send()" >OK</button>
+</form>
+

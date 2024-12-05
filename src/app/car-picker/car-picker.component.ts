@@ -23,10 +23,13 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
   endHour!: Time
   cars: Car[] = []
   datePickerForm!: FormGroup;
-  hours: SelectValue[] = []
+  startHours: SelectValue[] = []
+  endHours: SelectValue[] = []
   @ViewChild('carsContainer', {static: false})
   carsContainer!: ElementRef;
   scroll = true;
+  today = new Date("12/06/2024");
+
 
 
   constructor(private bookingService: BookingService,
@@ -36,8 +39,10 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
               private viewportScroller: ViewportScroller,
               private appRef: ApplicationRef,
               private zone: NgZone) {
-    this.hours = this.getHoursInDay();
+    this.startHours = this.getHoursInDay(0);
+    this.endHours = this.getHoursInDay(0);
     this.buildForm()
+    this.changeOnDates()
   }
 
   ngAfterViewInit(): void {
@@ -73,6 +78,33 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
     })
   }
 
+  changeOnDates() {
+    this.datePickerForm.valueChanges.subscribe((value) => {
+      console.log("je change ok")
+
+      if(value.startDate && value.endDate) {
+        console.log(this.today)
+        const normalizedStartDateHandle = new Date(value.startDate.getFullYear(), value.startDate.getMonth(), value.startDate.getDate());
+        const normalizedEndDateHandle = new Date(value.endDate.getFullYear(), value.endDate.getMonth(), value.endDate.getDate());
+        const normalizedDateToday = new Date(this.today.getFullYear(), this.today.getMonth(), this.today.getDate());
+
+        if(normalizedStartDateHandle.getTime() === normalizedDateToday.getTime()) {
+          this.startHours = this.getHoursInDay(this.today.getHours());
+        }
+
+        if(normalizedEndDateHandle.getTime() === normalizedDateToday.getTime()) {
+          this.endHours = this.getHoursInDay(this.today.getHours());
+        }
+
+        if(normalizedStartDateHandle.getTime() === normalizedEndDateHandle.getTime()) {
+          if(value.startHour) {
+            this.endHours = this.getHoursInDay(value.startHour.hours)
+          }
+        }
+      }
+    })
+  }
+
   async ngOnInit() {
 
     const book = await this.sessionService.getCurrentBookData() ?? new Date()
@@ -98,7 +130,13 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
       .subscribe((availableCar) => {
         this.cars = availableCar
         console.log(this.cars)
+        this.cars.forEach(car => {
+          this.bookingService.getPhotosOfCars(car.id??'').subscribe((photos) => {
+            car.illustration = photos;
+          })
+        })
 
+        console.log(this.cars)
       })
 
 
@@ -151,18 +189,37 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
     this.sessionService.chooseDate(startDate, endDate, startHourAndMin, endHourAndMin);
   }
 
-  getHoursInDay() {
+  getHoursInDay(filter?: number) {
+
+    console.log(filter)
     let timeOfDates: SelectValue[] = []
     for (let hours = 0; hours < 24; hours++) {
-      for (let minutes = 0; minutes < 60; minutes += 30) {
-        timeOfDates.push({
-          value: {hours: hours, minutes: minutes},
-          display: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
-        })
+      for (let minutes = 0; minutes < 60; minutes+=30) {
+        if(filter && hours >= filter) {
+          timeOfDates.push({
+            value: {hours: hours, minutes: minutes},
+            display: `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
+          })
+        }
+
       }
     }
-    console.log(timeOfDates)
     return timeOfDates;
   }
 
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+    // Comparer avec aujourd'hui
+    return date <= new Date();
+  };
+
+  getMainIllustration(car: Car) {
+    const main = car.illustration?.find(illustration => illustration.type === "main");
+    if(main) {
+      return main.url
+    }
+    return "assets/images/Manycar_28-04-2024-7.jpg"
+  }
 }

@@ -29,13 +29,14 @@
             <mat-form-field class="example-form-field">
               <mat-label>Date souhaité</mat-label>
               <mat-date-range-input
-                [rangePicker]="campaignOnePicker">
+                [rangePicker]="campaignOnePicker"
+                [min]="today">
                 <input matStartDate placeholder="Début" formControlName="startDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
                 <input matEndDate placeholder="Jusqu'au" formControlName="endDate" (focus)="campaignOnePicker.open()" (click)="campaignOnePicker.open()">
               </mat-date-range-input>
               <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-              <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+              <mat-datepicker-toggle  matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker  touchUi #campaignOnePicker ></mat-date-range-picker>
             </mat-form-field>
           </div>
 
@@ -44,7 +45,7 @@
               type="select"
               subject="Heure de départ"
               icon="flag"
-              [selectValues]="hours"
+              [selectValues]="startHours"
               placeholder="20" formControlName="startHour"></el-input>
           </div>
 
@@ -53,7 +54,7 @@
               type="select"
               subject="Heure de retour"
               icon="car_repair"
-              [selectValues]="hours"
+              [selectValues]="endHours"
               placeholder="20" formControlName="endHour"></el-input>
           </div>
 
