@@ -26,6 +26,7 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
   hours: SelectValue[] = []
   @ViewChild('carsContainer', {static: false})
   carsContainer!: ElementRef;
+  scroll = true;
 
 
   constructor(private bookingService: BookingService,
@@ -41,22 +42,27 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appRef.isStable.subscribe((isStable) => {
-      if (isStable) {
-        const element = this.carsContainer.nativeElement;
-
-        // Calcule la position exacte de l'élément par rapport au sommet du document
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-
-        // Défile jusqu'à cette position pour aligner l'élément avec le haut de la page
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth', // Scrolling fluide
-        });
+      if (isStable && this.scroll) {
+        this.scroll = false
+        this.scrollToCarsContainer();
       }
-    });
+    })
 
   }
 
+
+  private scrollToCarsContainer() {
+    const element = this.carsContainer.nativeElement;
+
+    // Calcule la position exacte de l'élément par rapport au sommet du document
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY - 100;
+
+    // Défile jusqu'à cette position pour aligner l'élément avec le haut de la page
+    window.scrollTo({
+      top: elementPosition,
+      behavior: 'smooth', // Scrolling fluide
+    });
+  }
 
   buildForm() {
     this.datePickerForm = this.formBuilder.group({
@@ -130,9 +136,17 @@ export class CarPickerComponent implements OnInit, AfterViewInit {
       throw new Error()
     }
 
+    this.startDate = startDate
+    this.endDate = endDate
     //in booking service this method going to initialize a list of available car and car-pickers component will call this list of cars
-    this.bookingService.setAvailableCar(startDate, endDate);
-    console.log(startDate)
+    this.bookingService.getCars(this.startDate, this.endDate)
+      .subscribe((availableCar) => {
+        this.cars = availableCar
+        console.log(this.cars)
+
+        this.scrollToCarsContainer()
+
+      })
 
     this.sessionService.chooseDate(startDate, endDate, startHourAndMin, endHourAndMin);
   }
