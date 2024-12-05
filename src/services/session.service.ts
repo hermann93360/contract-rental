@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Car, ICar} from "../model/Car";
-import {BehaviorSubject, map, Observable} from "rxjs";
+import {BehaviorSubject, firstValueFrom, map, Observable} from "rxjs";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Booking} from "../model/Contract";
 import {Book} from "../model/Book";
+import {SelectValue} from "../app/elements/input/input.component";
+import {Time} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,13 @@ export class SessionService {
     this.initialize();
     this.data = new BehaviorSubject<Book>(this.bookingData);
   }
-  public chooseDate(start: Date, end: Date): void {
+  public chooseDate(start: Date, end: Date, startHour: Time, endHour: Time): void {
     this.bookingData.start = start;
     this.bookingData.end = end;
+    this.bookingData.startHour = startHour;
+    this.bookingData.endHour = endHour;
+
+    console.log(startHour)
     this.persist();
   }
 
@@ -81,5 +87,9 @@ export class SessionService {
     const bookingDataAsJson: string = JSON.stringify(this.bookingData);
     this.data.next(this.bookingData);
     localStorage.setItem('bookData', bookingDataAsJson)
+  }
+
+  public getCurrentBookData(){
+    return firstValueFrom(this.data);
   }
 }

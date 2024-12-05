@@ -57,8 +57,10 @@ export class InputComponent implements ControlValueAccessor{
 
   @Input() formControl = new FormControl();
 
-  compareFn(s1: SelectValue, s2: SelectValue): boolean {
-    return s1 && s2 ? s1.value === s2.value : s1 === s2;
+  compareFn(s1: any, s2: any): boolean {
+    console.log(s1)
+    console.log(s2)
+    return s1 && s2 ? s1.hours === s2.hours &&  s1.minutes === s2.minutes : s1 === s2;
   }
 
   writeValue(obj: any | any[]): void {

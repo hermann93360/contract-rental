@@ -1,4 +1,5 @@
 import {differenceInDays, differenceInHours} from "date-fns";
+
 export interface ICar{
   make: string,
   model: string,
@@ -16,6 +17,7 @@ export interface ICar{
   unitPrice: number,
   id?: string
 }
+
 export class Car {
 
   public static HIGH_PERIOD: SpecificPeriod[] =
@@ -101,12 +103,8 @@ export class Car {
   }
 
   getTotalPrice(debutLocation: Date, finLocation: Date, highPeriod: SpecificPeriod[]): number {
-    console.log(debutLocation)
     debutLocation = new Date(debutLocation)
     finLocation = new Date(finLocation)
-    console.log(this.unitPrice)
-    console.log(debutLocation)
-    console.log(finLocation)
     let totalPrice = 0;
     const totalDays = this.getTotalDays(debutLocation, finLocation);
 

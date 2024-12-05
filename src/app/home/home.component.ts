@@ -69,7 +69,6 @@ export class HomeComponent {
     this.setDateToSearchCar(startDate, endDate)
     //in booking service this method going to initialize a list of available car and car-pickers component will call this list of cars
     this.bookingService.setAvailableCar(startDate, endDate);
-    this.sessionService.chooseDate(startDate, endDate);
   }
   setDateToSearchCar(start: Date, end: Date) {
     this.dateSet = {start: start, end: end}

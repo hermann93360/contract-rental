@@ -17,11 +17,13 @@ import {DetailsComponent} from "./check-in-flow/details/details.component";
 import {BlemishesComponent} from "./check-in-flow/blemishes/blemishes.component";
 import {EndComponent} from "./check-in-flow/end/end.component";
 import {BoardComponent} from "./board/board.component";
+import {CreateCarsComponent} from "./create-cars/create-cars.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contract', component: ContractComponent },
   { path: 'board', component: BoardComponent },
+  { path: 'private', component: CreateCarsComponent },
   { path: 'set-contract', component: SetContractComponent },
   { path: 'book', component: BookComponent },
   { path: 'home', component: HomeComponent },
@@ -41,7 +43,10 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'disabled' })],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled', // Restaure la position après navigation
+    anchorScrolling: 'enabled', // Active le défilement vers des ancres
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -38,7 +38,7 @@ export class CarDetailsComponent {
 
 
   goCarPickers() {
-    this.router.navigate(["home"])
+    this.router.navigate(["cars-picker"])
   }
 
   bookCar() {

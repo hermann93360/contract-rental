@@ -1,54 +1,111 @@
-@for (car of cars; track cars) {
-    <div class="card" (click)="selectCar(car)">
-      <div class="img-head">
-        <img src="assets/clio.jpg" />
-      </div>
-      <div class="gradient">
+<app-navigation></app-navigation>
+<div class="container">
+  <section class="some-text">
+    <h3 class="big-title">Retrouvez nos véhicules juste en bas !</h3>
+  </section>
 
-      </div>
-      <div class="about">
-        <div class="top">
-          <h4>{{car.make}} {{car.model}}</h4>
-          <p class="model">{{ car.type }}</p>
-          <div class="some-data">
-            <div class="data">
-              <span class="material-symbols-outlined">auto_transmission</span>
-              <p>{{ car.transmission }}</p>
-            </div>
-            <div class="data">
-              <span class="material-symbols-outlined">person</span>
-              <p>{{ car.passenger }}</p>
-            </div>
-            <div class="data">
-              <span class="material-symbols-outlined">propane_tank</span>
-              <p>{{ car.fuel }}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bottom">
-          <div class="price">
-            <div class="price-text-unit">
-              <p>{{ car.unitPrice }}</p>
-              <p>/jour</p>
-            </div>
-            <div class="price-text-global">
-              <p>{{car.getTotalPrice(startDate, endDate, [])}} € au total</p>
-            </div>
-          </div>
-          <div class="odometers">
-            <span class="material-symbols-outlined">done</span>
-            <p>Incl. {{ car.distanceIncluded }} km</p>
-          </div>
-        </div>
-
-        <!--
-        <div class="location">
-          <span class="material-symbols-outlined">location_on</span>
-        </div>
-        -->
-      </div>
+  <section class="booking-form">
+    <div class="title">
+      <h3> Partez à la recherche de votre véhicule </h3>
+      <span class="material-symbols-outlined">unpaved_road</span>
     </div>
-  }
+    <div class="some">
+      <form [formGroup]="datePickerForm">
+        <div class="input">
+          <mat-form-field class="example-form-field">
+            <mat-label>Date souhaité</mat-label>
+            <mat-date-range-input
+              [rangePicker]="campaignOnePicker">
+              <input matStartDate placeholder="Début" formControlName="startDate">
+              <input matEndDate placeholder="Jusqu'au" formControlName="endDate">
+            </mat-date-range-input>
+            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
 
+        <div class="input">
+          <el-input
+            type="select"
+            subject="Heure de départ"
+            icon="flag"
+            [selectValues]="hours"
+            placeholder="20" formControlName="startHour"></el-input>
+        </div>
+
+        <div class="input">
+          <el-input
+            type="select"
+            subject="Heure de retour"
+            icon="car_repair"
+            [selectValues]="hours"
+            placeholder="20" formControlName="endHour"></el-input>
+        </div>
+
+        <div class="button">
+          <app-button text="Rechercher" icon="search" (click)="searchAvailableCars()"></app-button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <div class="cars" id="cars" #carsContainer>
+
+    @for (car of cars; track cars) {
+      <div class="card" (click)="selectCar(car)">
+        <div class="img-head">
+          <img src="assets/images/Manycar_28-04-2024-7.jpg"/>
+        </div>
+        <div class="gradient">
+
+        </div>
+        <div class="about">
+          <div class="top">
+            <h4>{{ car.make }} {{ car.model }}</h4>
+            <p class="model">{{ car.type }}</p>
+            <div class="some-data">
+              <div class="data">
+                <span class="material-symbols-outlined">auto_transmission</span>
+                <p>{{ car.transmission }}</p>
+              </div>
+              <div class="data">
+                <span class="material-symbols-outlined">person</span>
+                <p>{{ car.passenger }}</p>
+              </div>
+              <div class="data">
+                <span class="material-symbols-outlined">propane_tank</span>
+                <p>{{ car.fuel }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <div class="price">
+              <div class="price-text-unit">
+                <p>{{ car.unitPrice }}</p>
+                <p>/jour</p>
+              </div>
+              <div class="price-text-global">
+                <p>{{ car.getTotalPrice(startDate, endDate, []) }} € au total</p>
+              </div>
+            </div>
+            <div class="odometers">
+              <span class="material-symbols-outlined">done</span>
+              <p>Incl. {{ car.distanceIncluded }} km</p>
+            </div>
+          </div>
+
+          <!--
+          <div class="location">
+            <span class="material-symbols-outlined">location_on</span>
+          </div>
+          -->
+        </div>
+      </div>
+    }
+  </div>
+
+</div>
 

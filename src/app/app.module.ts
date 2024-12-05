@@ -12,7 +12,7 @@ import {SetContractComponent} from './set-contract/set-contract.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {provideFirebaseApp, getApp, initializeApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
@@ -51,6 +51,8 @@ import {NavigationComponent} from "./navigation/navigation.component";
 import {TagModule} from "primeng/tag";
 import {Button} from "primeng/button";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {CreateCarsComponent} from "./create-cars/create-cars.component";
+import {QuillModule} from "ngx-quill";
 
 
 @NgModule({
@@ -72,6 +74,7 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     DigitComponent,
     StarRatingComponent,
     CarBookingComponent,
+    CreateCarsComponent,
     BoardComponent
   ],
   imports: [
@@ -122,11 +125,14 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     CarouselModule,
     TagModule,
     Button,
-    CarouselModule
+    CarouselModule,
+    QuillModule,
   ],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } ,// ou 'fr-FR'
     provideNgxStripe('pk_test_51OuaRSDexVtbuJLZavgmajD6zlt0vEq6uLDUCwu5Qectd4ohYRSGRYwQInKfHQ29O6cFV7FS5AMkAxTZJE5Kn8Ys00iw6ECKnl')
   ],
+
   exports: [
     InputComponent,
   ],

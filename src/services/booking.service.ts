@@ -29,12 +29,12 @@ export class BookingService {
   }
 
   setAvailableCar(startDate: Date, endDate: Date) {
-    this.getCars().subscribe((cars) => {
+    this.getCars(startDate, endDate).subscribe((cars) => {
       this.sharedCars.next(cars);
     })
   }
 
-  getCars() :Observable<Car[]> {
+  getCars(startDate: Date, endDate: Date):Observable<Car[]> {
     return this.store.collection('cars').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;

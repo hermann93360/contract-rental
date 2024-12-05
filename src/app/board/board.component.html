@@ -4,16 +4,17 @@
 
     <section class="some-text">
       <div class="introduce">
-        <p >Bienvenue chez </p>
-        <img src="assets/images/complete-logo.png" alt="manycar" />
+        <p>Bienvenue chez </p>
+        <img src="assets/images/complete-logo.png" alt="manycar"/>
       </div>
       <h3 class="big-title">Louer n'a jamais été aussi facile !</h3>
-      <p class="description">Réserver instantanément votre véhicule sans plus attendre et récupéré le en toute autonomie</p>
+      <p class="description">Réserver instantanément votre véhicule sans plus attendre et récupéré le en toute
+        autonomie</p>
     </section>
 
     <section class="header">
       <div class="banner-image">
-        <img src="assets/images/person.png" alt="person" />
+        <img src="assets/images/person.png" alt="person"/>
       </div>
     </section>
 
@@ -23,43 +24,44 @@
         <span class="material-symbols-outlined">unpaved_road</span>
       </div>
       <div class="some">
-        <div class="input">
-          <mat-form-field class="example-form-field">
-            <mat-label>Date souhaité</mat-label>
-            <mat-date-range-input
-              [rangePicker]="campaignOnePicker">
-              <input matStartDate placeholder="Début">
-              <input matEndDate placeholder="Jusqu'au" >
-            </mat-date-range-input>
-            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-          </mat-form-field>
-        </div>
+        <form [formGroup]="datePickerForm">
+          <div class="input">
+            <mat-form-field class="example-form-field">
+              <mat-label>Date souhaité</mat-label>
+              <mat-date-range-input
+                [rangePicker]="campaignOnePicker">
+                <input matStartDate placeholder="Début" formControlName="startDate">
+                <input matEndDate placeholder="Jusqu'au" formControlName="endDate">
+              </mat-date-range-input>
+              <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+            </mat-form-field>
+          </div>
 
-        <div class="input">
-          <el-input
-            type="select"
-            subject="Heure de départ"
-            icon="flag"
-            [selectValues]="hours"
-            placeholder="20"></el-input>
-        </div>
+          <div class="input">
+            <el-input
+              type="select"
+              subject="Heure de départ"
+              icon="flag"
+              [selectValues]="hours"
+              placeholder="20" formControlName="startHour"></el-input>
+          </div>
 
-        <div class="input">
-          <el-input
-            type="select"
-            subject="Heure de retour"
-            icon="car_repair"
-            [selectValues]="hours"
-            placeholder="20"></el-input>
-        </div>
+          <div class="input">
+            <el-input
+              type="select"
+              subject="Heure de retour"
+              icon="car_repair"
+              [selectValues]="hours"
+              placeholder="20" formControlName="endHour"></el-input>
+          </div>
 
-        <div class="button">
-          <app-button text="Rechercher" icon="search"></app-button>
-        </div>
+          <div class="button">
+            <app-button text="Rechercher" icon="search" (click)="searchAvailableCars()"></app-button>
+          </div>
 
-
+        </form>
       </div>
     </section>
 
@@ -109,24 +111,29 @@
 
     <div class="data-on-strengths">
       <div class="person">
-        <img src="assets/images/person-with-phone.png" alt="person" />
+        <img src="assets/images/person-with-phone.png" alt="person"/>
       </div>
       <div class="aside">
         <div class="description">
           <h3>Une solution revolutionnaire dans le domaine</h3>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
         </div>
         <div class="card">
           <span>1</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
         <div class="card">
           <span>2</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
         <div class="card">
           <span>3</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
       </div>
     </div>
@@ -134,7 +141,8 @@
     <div class="car vehicles">
       <div class="titles-box">
         <h3>Découvrez notre large gamme de véhicules</h3>
-        <p>Chez manycar, nous essayons de satisfaire les besoins de tous nos clients avec tout type de véhicule. De la twingo 3 à la Audi A3</p>
+        <p>Chez manycar, nous essayons de satisfaire les besoins de tous nos clients avec tout type de véhicule. De la
+          twingo 3 à la Audi A3</p>
       </div>
       <owl-carousel-o [options]="customOptions">
         <ng-container *ngFor="let slide of slides">
@@ -151,19 +159,24 @@
       <div class="aside">
         <div class="description">
           <h3>Une solution revolutionnaire dans le domaine</h3>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+            Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
         </div>
         <div class="card">
           <span>1</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
         <div class="card">
           <span>2</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
         <div class="card">
           <span>3</span>
-          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
+          <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit
+            tortor eget felis porttitor volutpat.</p>
         </div>
       </div>
     </div>
@@ -179,7 +192,7 @@
               <div [class]=" i % 2 == 0 ? 'even comment' : 'odd comment'">
                 <div class="header">
                   <div class="persona">
-                    <img class="persona-icon" src="assets/images/man.png" alt="man" />
+                    <img class="persona-icon" src="assets/images/man.png" alt="man"/>
                   </div>
                   <div class="about">
                     <h3>Hermann</h3>
@@ -187,7 +200,8 @@
                   </div>
                 </div>
                 <div class="body">
-                  <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor </p>
+                  <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus
+                    suscipit tortor eget felis porttitor </p>
                 </div>
               </div>
             </div>
@@ -198,8 +212,10 @@
 
     <div class="footer">
       <div class="header">
-        <img class="white-logo" src="assets/images/white-logo.png" alt="logo blanc" />
-        <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
+        <img class="white-logo" src="assets/images/white-logo.png" alt="logo blanc"/>
+        <p>Donec rutrum congue leo eget malesuada. Pellentesque in ipsum id orci porta dapibus. Vivamus suscipit tortor
+          eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non
+          nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh.</p>
         <div class="social">
           <div class="icon">
             <i class="ri-facebook-fill"></i>

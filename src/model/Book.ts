@@ -1,4 +1,6 @@
 import {Car} from "./Car";
+import {SelectValue} from "../app/elements/input/input.component";
+import {Time} from "@angular/common";
 
 export  class Book {
   public lastname?: string
@@ -17,6 +19,8 @@ export  class Book {
   public login?: string
   public contractId?: string
   public carSupport?: string
+  public startHour?: Time
+  public endHour?: Time
 
 
   constructor() {
@@ -43,6 +47,10 @@ export  class Book {
     book.insuranceType = serializedBook.insuranceType;
     book.dateOfBirth = new Date(serializedBook.dateOfBirth);
     book.login = serializedBook.login;
+    book.startHour = serializedBook.startHour;
+    book.endHour = serializedBook.endHour;
+    console.log(book.startHour)
+    console.log(book.endHour)
     return book;
   }
 }
