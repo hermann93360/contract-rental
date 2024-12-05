@@ -52,7 +52,6 @@ import {TagModule} from "primeng/tag";
 import {Button} from "primeng/button";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {CreateCarsComponent} from "./create-cars/create-cars.component";
-import {QuillModule} from "ngx-quill";
 
 
 @NgModule({
@@ -126,7 +125,6 @@ import {QuillModule} from "ngx-quill";
     TagModule,
     Button,
     CarouselModule,
-    QuillModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } ,// ou 'fr-FR'
